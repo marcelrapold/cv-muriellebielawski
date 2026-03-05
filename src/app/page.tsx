@@ -707,13 +707,13 @@ export default async function CV({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
       
-      <div className="max-w-7xl mx-auto md:grid md:grid-cols-[300px_1fr] min-h-screen print:grid print:grid-cols-[220px_1fr] print:min-h-0">
+      <div className="max-w-7xl mx-auto md:[--hero-row-h:24rem] lg:[--hero-row-h:25rem] md:grid md:grid-cols-[300px_1fr] min-h-screen print:grid print:grid-cols-[220px_1fr] print:min-h-0">
         
         {/* --- Sidebar (Left) --- */}
         <aside className="bg-sidebar border-r border-sidebar-border md:sticky md:top-0 md:h-screen md:overflow-y-auto flex flex-col transition-colors duration-300 print:bg-white print:static print:h-auto print:overflow-visible print:border-r print:border-b-0 print:[break-inside:avoid]">
           
           {/* Profile Image - Full Width & Matched Height */}
-          <div className="relative w-full aspect-[3/4] print:aspect-[3/4] print:h-auto overflow-hidden bg-sidebar border-b border-sidebar-border shrink-0">
+          <div className="relative w-full aspect-[3/4] md:aspect-auto md:h-[var(--hero-row-h)] print:aspect-[3/4] print:h-auto overflow-hidden bg-sidebar border-b border-sidebar-border shrink-0">
             <div className="print:hidden absolute inset-0">
               <Avatar
                 staticSrc="/mra.png"
@@ -867,7 +867,7 @@ export default async function CV({
         <main className="flex flex-col">
           
           {/* Header & Summary Section - Height Matched to Image (approx) */}
-          <div className="hidden md:flex print:flex flex-col justify-center p-6 md:p-12 print:p-5 border-b border-border min-h-[400px] print:min-h-0 relative">
+          <div className="hidden md:flex print:flex flex-col justify-center p-6 md:p-12 print:p-5 border-b border-border md:h-[var(--hero-row-h)] md:min-h-0 print:min-h-0 relative">
             <div className="absolute top-6 right-6 print:hidden">
               <div className="flex items-center gap-2">
                 <LanguageToggle />
@@ -879,7 +879,7 @@ export default async function CV({
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-2">
                 {profile.name}
               </h1>
-              <p className="text-xl text-accent font-medium">
+              <p className="text-xl print:text-lg print:leading-snug text-accent font-medium">
                 {profile.title}
               </p>
             </div>
