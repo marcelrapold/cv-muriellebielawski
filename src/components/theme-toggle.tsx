@@ -6,7 +6,7 @@ import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils"
 
 export function ThemeToggle({ className }: { className?: string }) {
-  const { resolvedTheme, setTheme } = useTheme()
+  const { theme, resolvedTheme, setTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
 
   React.useEffect(() => {
@@ -17,7 +17,8 @@ export function ThemeToggle({ className }: { className?: string }) {
     if (!mounted) {
       return
     }
-    const nextTheme = resolvedTheme === "dark" ? "light" : "dark"
+    const currentTheme = resolvedTheme ?? theme ?? "dark"
+    const nextTheme = currentTheme === "dark" ? "light" : "dark"
     setTheme(nextTheme)
   }
 
