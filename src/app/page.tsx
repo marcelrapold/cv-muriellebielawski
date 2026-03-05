@@ -293,7 +293,7 @@ const experienceDe = [
     company: "Zürcher Verkehrsverbund (ZVV)",
     description: (
       <ul className="list-disc list-outside ml-4 space-y-2">
-        <li><strong className="text-foreground">Stv. ICT-Projektleiter für KI-Produkt- und Plattform-Initiativen:</strong> Führung strategischer KI-Vorhaben und Plattformentwicklung.</li>
+        <li><strong className="text-foreground">ICT-Projektleiter für KI-Produkt- und Plattform-Initiativen:</strong> Führung strategischer KI-Vorhaben und Plattformentwicklung.</li>
         <li><strong className="text-foreground">Verantwortung Digitale Plattform:</strong> End-to-end Betrieb und Weiterentwicklung von zvv.ch als zentrale Kundenschnittstelle inkl. IT-Architektur, Hosting und Testmanagement.</li>
         <li><strong className="text-foreground">Digitalisierung & App-Ökosystem:</strong> Mitverantwortung für Web- und Mobile-Portfolio. Aufbau neuer Services zur Verbesserung der Kundenerfahrung.</li>
         <li><strong className="text-foreground">Ticketshop & Digitale Kanäle:</strong> Sicherstellung der Interoperabilität zwischen Ticketshop und digitalen Kanälen sowie Mitarbeit an Account-Roadmap und Frontend.</li>
