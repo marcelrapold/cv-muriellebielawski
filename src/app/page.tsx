@@ -714,14 +714,24 @@ export default async function CV({
           
           {/* Profile Image - Full Width & Matched Height */}
           <div className="relative w-full aspect-[3/4] print:aspect-auto print:h-44 overflow-hidden bg-sidebar border-b border-sidebar-border shrink-0">
-            <Avatar
-              staticSrc="/mra.png"
-              animatedSrc="/mra.gif"
+            <div className="print:hidden absolute inset-0">
+              <Avatar
+                staticSrc="/mra.png"
+                animatedSrc="/mra.gif"
+                alt={profile.name}
+                priority
+              />
+            </div>
+            <img
+              src="/mra.png"
               alt={profile.name}
-              priority
+              className="hidden print:block w-full h-full object-cover object-center"
+              loading="eager"
+              decoding="async"
+              draggable={false}
             />
             {/* Desktop Gradient Overlay */}
-            <div className="hidden md:block absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-sidebar to-transparent opacity-90 transition-colors duration-300 z-20 pointer-events-none" />
+            <div className="hidden md:block print:hidden absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-sidebar to-transparent opacity-90 transition-colors duration-300 z-20 pointer-events-none" />
 
             {/* Mobile Gradient Overlay & Content */}
             <div className="md:hidden print:hidden absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90 z-20 pointer-events-none" />
