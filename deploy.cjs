@@ -4,6 +4,7 @@ const https = require('https');
 
 const TOKEN = process.env.VERCEL_TOKEN;
 const PROJECT_ID = 'prj_VecRG4GhWhnWtYwDVUmcyzq6OxM8';
+const GITHUB_REPO = process.env.DEPLOY_GITHUB_REPO || 'your-org/cv-muriellebielawski';
 
 const files = [
   'package.json',
@@ -33,12 +34,12 @@ async function createDeployment() {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      name: 'marcel-cv',
+      name: 'murielle-cv',
       project: PROJECT_ID,
       framework: 'nextjs',
       gitSource: {
         type: 'github',
-        repo: 'iamaeon99/marcel-cv',
+        repo: GITHUB_REPO,
         ref: 'master'
       },
       // Skip git commit check
