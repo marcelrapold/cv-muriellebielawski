@@ -433,17 +433,26 @@ const languagesEn = [
   { lang: "Spanish", flagCode: "es", level: "A1" },
 ];
 
-const certifications = [
-  "12/23 - American Red Cross First Aid",
-  "06/21 - NIVEA Marketing Project Beiersdorf, Berlin",
+const certificationsDe = [
+  "12/23 - American Red Cross: First Aid",
+  "06/21 - NIVEA Marketing Projekt, Beiersdorf (Berlin)",
 ];
 
-const niveaProjectBullets = [
-  "Develop a new product for NIVEA",
-  "Research on target group and competitors",
-  "Develop a prototype for the product",
-  "Research on marketing strategies",
-  "Present the final product to Beiersdorf",
+const certificationsEn = [
+  "12/23 - American Red Cross: First Aid",
+  "06/21 - NIVEA Marketing Project, Beiersdorf (Berlin)",
+];
+
+const niveaProjectBulletsDe = [
+  "Neues NIVEA-Produkt konzipiert",
+  "Zielgruppe und Wettbewerb analysiert",
+  "Prototyp entwickelt und vorgestellt",
+];
+
+const niveaProjectBulletsEn = [
+  "Designed a new NIVEA product concept",
+  "Analyzed target group and competitors",
+  "Built and presented a prototype",
 ];
 
 const interestsDe = ["Gym", "Reisen", "Podcast", "Zumba"];
@@ -459,7 +468,8 @@ export default async function CV({
   const profile = locale === "en" ? profileEn : profileDe;
   const topSkillsLocalized = topSkills;
   const languagesLocalized = locale === "en" ? languagesEn : languages;
-  const certificationsLocalized = certifications;
+  const certificationsLocalized = locale === "en" ? certificationsEn : certificationsDe;
+  const niveaProjectBulletsLocalized = locale === "en" ? niveaProjectBulletsEn : niveaProjectBulletsDe;
   const experienceLocalized = locale === "en" ? experienceEn : experienceDe;
   const internshipLocalized = locale === "en" ? internshipEn : internshipDe;
   const educationLocalized = locale === "en" ? educationEn : educationDe;
@@ -617,7 +627,7 @@ export default async function CV({
                 ))}
               </ul>
               <ul className="ml-4 mt-3 list-outside list-disc space-y-1 text-xs text-muted-foreground">
-                {niveaProjectBullets.map((item) => (
+                {niveaProjectBulletsLocalized.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>

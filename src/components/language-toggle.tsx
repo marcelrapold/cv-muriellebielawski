@@ -27,9 +27,14 @@ export function LanguageToggle({ className }: { className?: string }) {
     const params = new URLSearchParams(
       typeof window !== "undefined" ? window.location.search : ""
     );
-    params.set("lang", lang);
+    if (lang === "de") {
+      params.set("lang", "de");
+    } else {
+      params.delete("lang");
+    }
     setActiveLang(lang);
-    router.replace(`${pathname}?${params.toString()}`);
+    const query = params.toString();
+    router.replace(query ? `${pathname}?${query}` : pathname);
     router.refresh();
   };
 
