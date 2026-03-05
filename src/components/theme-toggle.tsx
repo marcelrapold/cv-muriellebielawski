@@ -2,36 +2,23 @@
 
 import * as React from "react"
 import { Moon, Sun } from "lucide-react"
-import { usePathname, useRouter } from "next/navigation"
 import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils"
 
 export function ThemeToggle({ className }: { className?: string }) {
-  const { theme, setTheme } = useTheme()
-  const router = useRouter()
-  const pathname = usePathname()
+  const { resolvedTheme, setTheme } = useTheme()
+  const [mounted, setMounted] = React.useState(false)
 
   React.useEffect(() => {
-    if (typeof window === "undefined") {
-      return
-    }
-    const params = new URLSearchParams(window.location.search)
-    const queryTheme = params.get("theme")
-    if (queryTheme === "light" || queryTheme === "dark") {
-      setTheme(queryTheme)
-    }
-  }, [setTheme])
+    setMounted(true)
+  }, [])
 
   const toggleTheme = () => {
-    const nextTheme = theme === "light" ? "dark" : "light"
+    if (!mounted) {
+      return
+    }
+    const nextTheme = resolvedTheme === "dark" ? "light" : "dark"
     setTheme(nextTheme)
-
-    const params = new URLSearchParams(
-      typeof window !== "undefined" ? window.location.search : ""
-    )
-    params.set("theme", nextTheme)
-    const query = params.toString()
-    router.replace(query ? `${pathname}?${query}` : pathname)
   }
 
   return (
