@@ -37,6 +37,26 @@ const education = [
     school: "HWZ",
   },
   {
+    period: "2024",
+    title: "Cloud Computing",
+    school: "Certification",
+  },
+  {
+    period: "2024",
+    title: "Becoming a Thought Leader",
+    school: "Certification",
+  },
+  {
+    period: "2024",
+    title: "Konfliktgespräche richtig führen",
+    school: "Certification",
+  },
+  {
+    period: "2024",
+    title: "Grundlagen der Programmierung: Agile Softwareentwicklung",
+    school: "Certification",
+  },
+  {
     period: "2017 - 2021",
     title: "MAS Digital Business",
     school: "HWZ",
@@ -58,25 +78,58 @@ const education = [
 const experience = [
   {
     period: "Jan 2022 - present",
-    title: "IT Project Manager",
+    title: "ICT Project Lead, AI Product & Platform",
     company: "Zürcher Verkehrsverbund (ZVV)",
     highlights: [
-      "Technical lead of AEM CMS cloud shift for zvv.ch",
-      "NOVA connection to central Swiss transport platform",
-      "SwissPass login implementation & migration to SP IdP",
-      "WebAnalytics tools evaluation & implementation",
-      "Mobile apps consolidation & timetable redesign",
+      "Acting ICT Project Lead for AI Product & Platform Initiatives",
+      "Owner for end-to-end operation of zvv.ch as central customer interface",
+      "AI-driven automation: Design & implement AI-powered workflow automation",
+      "Digital Platform: Optimize platform, IT architecture, hosting & test management",
+      "MVPs & POCs: Low-code scalable solutions into production (Dev/Ops)",
+      "SPOC for external development partners & quality assurance",
+      "AEM CMS cloud shift, NOVA connection, SwissPass login migration",
     ],
   },
   {
-    period: "June 2016 - present",
+    period: "June 2016 - Dez 2021",
     title: "Application Manager / Product Owner",
     company: "Zürcher Verkehrsverbund (ZVV)",
     highlights: [
-      "Product ownership & KPI definition",
-      "eTicketing architecture & security",
-      "IT risk & security management",
-      "Budget & contract responsibility",
+      "Business IT alignment & process/service management",
+      "IT risk, security & architecture management",
+      "Stakeholder management & KPI definition",
+      "eTicketing: Architecture, security, test management & operations",
+      "zvv.ch web development & customer-centricity strategy",
+    ],
+  },
+  {
+    period: "Mai 2025",
+    title: "Lecturer - Bitcoin & Lightning Network",
+    company: "HWZ Hochschule für Wirtschaft Zürich",
+    highlights: [
+      "Taught Lightning Network module in Europe's first Bitcoin-only executive program",
+      "CAS Bitcoin Economy - hands-on session with LNHunt",
+      "Topics: Taproot Assets, NOSTR, routing markets",
+    ],
+  },
+  {
+    period: "Nov 2023 - Okt 2024",
+    title: "Board Member",
+    company: "Bitcoin Association Switzerland",
+    highlights: [
+      "Advancing Bitcoin adoption in Switzerland",
+      "Public education & legal challenge coordination",
+      "Media liaison & ecosystem development",
+    ],
+  },
+  {
+    period: "2018 - present",
+    title: "Co-Founder | Information Officer",
+    company: "ALPA.one",
+    highlights: [
+      "Bitcoin & Lightning Network services",
+      "Lightning Network Node Deployment",
+      "Lightning Payment Systems & Custom Workflows",
     ],
   },
   {
@@ -86,16 +139,7 @@ const experience = [
     highlights: [
       "Digital multi-channel strategy",
       "Smart Home integration",
-      "ICT multimedia solutions",
-    ],
-  },
-  {
-    period: "2018 - present",
-    title: "Co-Founder | Information Officer",
-    company: "ALPA.one",
-    highlights: [
-      "Strategic IT planning",
-      "Business efficiency & innovation",
+      "ICT multimedia solutions for corporate clients",
     ],
   },
   {
@@ -103,28 +147,30 @@ const experience = [
     title: "Head of Web Development",
     company: "WebComTV AG",
     highlights: [
-      "Agile/SCRUM project management",
-      "Full-stack development",
+      "Agile/SCRUM & waterfall project management",
+      "Full-stack development (HTML5, jQuery, PHP, SQL)",
       "CMS development (Contao, Typo3, WordPress)",
     ],
   },
 ];
 
 const skills = [
-  { name: "Project Management", level: 95 },
-  { name: "HTML/CSS/JavaScript", level: 90 },
-  { name: "React/Next.js", level: 85 },
-  { name: "PHP/SQL", level: 80 },
+  { name: "IT Project Management", level: 95 },
+  { name: "AI/Platform Leadership", level: 90 },
+  { name: "Proxmox/Docker", level: 85 },
+  { name: "Cloudflare", level: 80 },
   { name: "AEM CMS", level: 75 },
-  { name: "Bitcoin/Lightning", level: 70 },
+  { name: "Bitcoin/Lightning", level: 85 },
 ];
 
 const skillTags = [
+  "Proxmox", "Docker", "Cloudflare",
   "Agile/SCRUM", "Requirements Engineering", "UML", "Risk Management",
   "HTML5/CSS3", "JavaScript", "PHP", "SQL", "React", "Next.js",
   "AEM", "WordPress", "Contao", "TypeScript",
   "IT Project Management", "Product Ownership", "Stakeholder Management",
-  "Public Transport", "Digital Finance", "Web Development", "CRM"
+  "Public Transport", "Digital Finance", "Web Development", "CRM",
+  "AI Automation", "Lightning Network"
 ];
 
 export default function CV() {
@@ -147,30 +193,45 @@ export default function CV() {
       />
 
       {/* Header Banner */}
-      <div className="h-48 bg-gradient-to-br from-orange-900 via-amber-900 to-yellow-900 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
+      <div className="h-32 md:h-40 bg-gradient-to-br from-orange-900 via-amber-900 to-yellow-900 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-30">
           <div className="absolute top-0 left-0 w-96 h-96 bg-orange-500 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
           <div className="absolute bottom-0 right-0 w-64 h-64 bg-yellow-500 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
         </div>
+        
+        <div className="max-w-6xl mx-auto px-6 h-full flex items-center">
+          {/* Left: Name & Title */}
+          <div className="text-white z-10">
+            <h1 className="text-4xl md:text-5xl font-bold mb-2">{profile.name}</h1>
+            <p className="text-xl md:text-2xl text-orange-300 mb-1">{profile.title}</p>
+            <p className="text-amber-300 text-lg">{profile.tagline}</p>
+          </div>
+        </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 -mt-32 relative z-10">
+      <div className="max-w-6xl mx-auto px-6 -mt-8 relative z-10">
         {/* Profile Card */}
         <div className="bg-[#111111] rounded-2xl border border-orange-500/20 shadow-2xl overflow-hidden mb-8">
           <div className="flex flex-col md:flex-row">
             {/* Left Sidebar */}
             <div className="md:w-80 bg-gradient-to-b from-[#1a1a1a] to-[#111111] p-8 border-r border-orange-500/10">
-              {/* Avatar Placeholder */}
-              <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-orange-500 to-amber-400 flex items-center justify-center text-4xl font-bold text-black">
-                MR
+              {/* Avatar - left side like original - full bleed portrait */}
+              <div className="w-[calc(100%+3rem)] h-80 -ml-6 -mt-8 mb-6 overflow-hidden">
+                <img 
+                  src="/headshot.jpg" 
+                  alt="Marcel Rapold" 
+                  className="w-full h-full object-cover"
+                />
               </div>
 
               {/* Name */}
+              <div>
               <h1 className="text-2xl font-bold text-white text-center mb-1">
                 {profile.name}
               </h1>
               <p className="text-orange-400 text-center mb-1">{profile.title}</p>
               <p className="text-amber-400 text-center text-sm mb-8">{profile.tagline}</p>
+              </div>
 
               {/* Contact */}
               <div className="space-y-4 mb-8">
@@ -243,8 +304,29 @@ export default function CV() {
                     </span>
                   ))}
                 </div>
+
+                {/* Languages */}
+                <div className="mt-8">
+                  <h3 className="text-orange-400 text-sm font-semibold mb-3 flex items-center gap-2">
+                    <span className="w-4 h-4 text-lg">🌍</span> Languages
+                  </h3>
+                  <div className="space-y-2">
+                    {[
+                      { lang: "Deutsch", level: "Native" },
+                      { lang: "Englisch", level: "Full Professional" },
+                      { lang: "Spanisch", level: "Native" },
+                      { lang: "Französisch", level: "Elementary" },
+                    ].map((l) => (
+                      <div key={l.lang} className="flex justify-between text-sm">
+                        <span className="text-gray-400">{l.lang}</span>
+                        <span className="text-orange-300">{l.level}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
+
 
             {/* Right Content */}
             <div className="flex-1 p-8">
@@ -255,10 +337,9 @@ export default function CV() {
                   Profile
                 </h2>
                 <p className="text-gray-300 leading-relaxed">
-                  Highly skilled and versatile IT Project Manager with extensive experience 
-                  in public transportation, digital innovation, and web development. 
-                  Specialized in leading high-impact projects from initial concept through implementation.
-                  Known for robust analytical skills, effective communication, and relentless focus on customer satisfaction.
+                  Technology must be efficient, sustainable, and decentralized. Digitalization is not a goal – 
+                  it's the lever for real transformation. I design and execute high-impact IT projects with 
+                  speed, precision, and foresight. From public transport to Bitcoin & Lightning: I build systems that perform.
                 </p>
               </section>
 
