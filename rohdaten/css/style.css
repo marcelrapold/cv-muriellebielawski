@@ -1,0 +1,187 @@
+@import url(https://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Serif:400,700);
+@import url(https://fonts.googleapis.com/css?family=Questrial);
+
+html,body {
+height:100%;
+font-family:'Droid Sans', sans-serif;
+font-family: 'Questrial', sans-serif;
+  font-size:16px;
+
+}
+
+body {
+background:rgba(49,69,73,0.2);
+background:black;  
+}
+
+h1 {
+/*  font-family:'Droid Serif', Arial, serif;  */
+font-weight:400!important;
+font-size:2.5em;
+ 
+}
+
+h2 {
+
+/*  font-family:'Droid Serif', Arial, serif;  */
+font-weight:400!important;
+font-size:1.5em;
+
+}
+
+h3 {
+
+/*  font-family:'Droid Sans', Arial, serif;  */
+  
+font-weight:200!important;
+font-size:1.25em;
+}
+
+h1 span {
+font-size:.8em;
+}
+#intro {
+  min-height:350px;
+ margin: auto;
+  padding: 25px 0;
+}
+#intro h1 {
+font-size:3.5em;
+font-weight:600!important;
+color: #A39161;
+  
+}
+
+#intro h2 {
+font-size:2em;
+font-weight:600!important;
+  color: white;
+  
+}
+#intro p {
+  font-size: 1.3em;
+  font-style: italic;
+  /*  font-family:'Droid Serif', Arial, serif;  */
+  color:white;
+  
+}
+
+p {
+font-size:1em;
+}
+
+.date {
+font-style:italic;
+}
+
+a {
+color:#FFF;
+}
+
+a:hover {
+text-decoration:none;
+}
+
+#layout_meta,#layout_main {
+min-height:100%;
+}
+
+
+
+#layout_meta hr {
+border-top:1px;
+margin:15px 0;
+}
+
+#layout_meta {
+color:#FFF;
+background: #40E1D1;
+background: -moz-linear-gradient(45deg, #40E1D1 0%, #008da9 68%, #062A85 100%);
+background: -webkit-linear-gradient(45deg, #40E1D1 0%,#008da9 68%,#062A85 100%);
+background: linear-gradient(45deg, #40E1D1 0%,#008da9 68%,#062A85 100%);
+background: linear-gradient(45deg, #B8904B 0%,#7A6032 68%,#282010 100%);  
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40E1D1', endColorstr='#0090c5',GradientType=1 );
+
+}
+
+#layout_meta p {
+font-size:.95em;
+}
+
+#layout_meta .layout_meta-inner {
+padding:15px 45px;
+
+}
+
+#layout_meta .layout_meta-inner::after {
+  content: "";
+    background: url(/img/connectwork.png);
+  opacity: 0.25;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+}
+#layout_meta ul,
+#layout_meta li {
+	list-style-type: none;
+	margin:0;
+	padding:0;
+}
+#layout_main ul {
+list-style-type:square;
+    padding: 0 2em;
+}
+#layout_main {
+
+
+}
+
+#interests .col-sm-2 {
+text-align:center;
+}
+
+.fill {
+width:100%;
+height:100%;
+min-height:100%;
+}
+
+.noPadding {
+padding:0;
+}
+
+.container-fluid {
+height:100%;
+}
+
+.cnBl {
+background:#FFF;
+margin:0 0 20px 0;
+}
+
+.portrait {
+background-image:url(../img/marcel-rapold.jpg);
+background-position:center;
+background-size:cover;
+background-repeat:no-repeat;
+min-height:350px;
+}
+
+.box-shadow {
+box-shadow:0 1px 3px rgba(0,0,0,.25);
+}
+
+#layout_meta span {
+color:#a18c60;
+}
+
+span {
+color:#a18c60;
+}
+
+.LI-badge-container.vertical.light {
+    width: 200px;
+}
