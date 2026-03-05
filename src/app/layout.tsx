@@ -6,9 +6,9 @@ import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://marcelrapold.com";
-const seoTitle = "Marcel Rapold | ICT Project Lead, AI Product & Platform Lead";
+const seoTitle = "Marcel Rapold CV | ICT Project Lead, AI Product & Platform Lead, EMBA";
 const seoDescription =
-  "Technology leader with focus on AI products, digital platforms, and high-impact IT execution. Based in Zurich, Switzerland.";
+  "Marcel Rapold's CV: ICT Project Lead and AI Product & Platform Lead with focus on digital platforms, automation, and high-impact IT execution in Zurich, Switzerland.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -35,6 +35,11 @@ export const metadata: Metadata = {
   publisher: "Marcel Rapold",
   alternates: {
     canonical: "/",
+  },
+  icons: {
+    icon: "/mra.png",
+    shortcut: "/mra.png",
+    apple: "/mra.png",
   },
   openGraph: {
     type: "website",

@@ -28,8 +28,20 @@ import { Avatar } from "@/components/avatar";
 
 // --- Components ---
 
-const Section = ({ title, children, icon, className }: { title: string; children: ReactNode; icon?: ReactNode; className?: string }) => (
-  <section className={cn("mb-12 print:mb-6", className)}>
+const Section = ({
+  id,
+  title,
+  children,
+  icon,
+  className,
+}: {
+  id?: string;
+  title: string;
+  children: ReactNode;
+  icon?: ReactNode;
+  className?: string;
+}) => (
+  <section id={id} className={cn("mb-12 print:mb-6", className)}>
     <div className="flex items-center gap-3 mb-6 print:mb-4 border-b border-border pb-2 print:[break-after:avoid]">
       {icon && <div className="text-accent">{icon}</div>}
       <h2 className="text-xl md:text-2xl font-bold text-foreground tracking-tight">{title}</h2>
@@ -248,6 +260,9 @@ const uiText = {
     certifications: "Zertifizierungen",
     experience: "Berufserfahrung",
     education: "Ausbildung",
+    quickLinks: "Direktlinks",
+    toExperience: "Zu Berufserfahrung",
+    toEducation: "Zu Ausbildung",
   },
   en: {
     email: "Email",
@@ -264,10 +279,14 @@ const uiText = {
     certifications: "Certifications",
     experience: "Professional Experience",
     education: "Education",
+    quickLinks: "Quick Links",
+    toExperience: "Go to Experience",
+    toEducation: "Go to Education",
   },
 };
 
-const experience = [
+
+const experienceDe = [
   {
     period: "Jan 2022 - Present",
     title: "ICT-Projektleiter, KI-Produkt & Plattform",
@@ -373,7 +392,7 @@ const experience = [
   },
 ];
 
-const education = [
+const educationDe = [
   {
     period: "Oct 2024 - May 2025",
     degree: "Executive MBA in General Management",
@@ -432,6 +451,171 @@ const education = [
   },
 ];
 
+const experienceEn = [
+  {
+    period: "Jan 2022 - Present",
+    title: "ICT Project Lead, AI Product & Platform",
+    company: "Zürcher Verkehrsverbund (ZVV)",
+    description: (
+      <ul className="list-disc list-outside ml-4 space-y-2">
+        <li><strong className="text-foreground">Deputy ICT project lead for AI product and platform initiatives:</strong> Leading strategic AI initiatives and platform development.</li>
+        <li><strong className="text-foreground">Digital platform ownership:</strong> End-to-end operation and evolution of zvv.ch as a central customer interface, including IT architecture, hosting, and test management.</li>
+        <li><strong className="text-foreground">Digitalization & app ecosystem:</strong> Co-responsible for the web and mobile portfolio. Built new services to improve customer experience.</li>
+        <li><strong className="text-foreground">Ticket shop & digital channels:</strong> Ensured interoperability between the ticket shop and digital channels and contributed to account roadmap and frontend topics.</li>
+        <li><strong className="text-foreground">AI-driven automation:</strong> Designed and implemented AI workflows to optimize internal processes.</li>
+        <li><strong className="text-foreground">MVPs & POCs:</strong> Designed and delivered scalable low-code solutions (Dev/Ops) for internal workflows and customer touchpoints.</li>
+        <li><strong className="text-foreground">SPOC for external partners:</strong> Central contact for development vendors, quality assurance, and coordination.</li>
+      </ul>
+    ),
+  },
+  {
+    period: "Jun 2016 - Dec 2021",
+    title: "Application Manager / Product Owner",
+    company: "Zürcher Verkehrsverbund (ZVV)",
+    description: (
+      <ul className="list-disc list-outside ml-4 space-y-1">
+        <li>Business-IT alignment to synchronize process and service management.</li>
+        <li>Implemented strategic requirements across IT risk, security, and architecture management.</li>
+        <li>Stakeholder management to improve communication workflows.</li>
+        <li>Operation and continuous development of zvv.ch (Product Owner role).</li>
+        <li>eTicketing: Technical project leadership, architecture, security, and operations.</li>
+      </ul>
+    ),
+  },
+  {
+    period: "2018 - Present",
+    title: "Co-Founder | Information Officer",
+    company: "ΛLPA.one – Bitcoin at Core ⚡ Lightning at Heart",
+    description: (
+      <ul className="list-disc list-outside ml-4 space-y-1">
+        <li>Specialized in Bitcoin and Lightning Network services.</li>
+        <li>Lightning Network node deployment and payment systems.</li>
+        <li>Custom Lightning workflows for seamless digital transactions.</li>
+      </ul>
+    ),
+  },
+  {
+    period: "May 2025",
+    title: "Lecturer - Bitcoin & Lightning Network",
+    company: "HWZ University of Applied Sciences Zurich",
+    description: "Lecturer for the Lightning Network module in Europe’s first Bitcoin-only executive program (CAS Bitcoin Economy). Topics: scaling, instant payments, wallets, nodes, and routing markets.",
+  },
+  {
+    period: "Nov 2023 - Oct 2024",
+    title: "Board Member",
+    company: "Bitcoin Association Switzerland",
+    description: "Promoted Bitcoin adoption, public communication, regulatory positioning, and media collaboration to strengthen the Swiss Bitcoin ecosystem.",
+  },
+  {
+    period: "Jan 2019 - Dec 2021",
+    title: "Consultant for Digital Innovation",
+    company: "Tele Locher",
+    description: "Planned and delivered digital multi-channel strategies, including smart-home integration and ICT multimedia solutions for business clients.",
+  },
+  {
+    period: "Jan 2014 - Apr 2016",
+    title: "Head of Web Development",
+    company: "WebComTV",
+    description: (
+      <ul className="list-disc list-outside ml-4 space-y-1">
+        <li>Project management (Agile/Waterfall).</li>
+        <li>Requirements engineering and business analysis.</li>
+        <li>Full-stack development (HTML5, PHP, SQL, CMS).</li>
+      </ul>
+    ),
+  },
+  {
+    period: "Jun 2010 - Dec 2013",
+    title: "Application Developer",
+    company: "Signorell GmbH",
+    description: (
+      <ul className="list-disc list-outside ml-4 space-y-1">
+        <li>Developed websites, iPad apps, and Facebook applications.</li>
+        <li>Digital imaging technician: ensured data security and integrity on film sets.</li>
+        <li>Technical planning and integration of live streaming solutions.</li>
+        <li>Infrastructure: NAS/SAN backup solutions and tape library management.</li>
+      </ul>
+    ),
+  },
+  {
+    period: "Jan 2007 - Jun 2010",
+    title: "Service Center Manager",
+    company: "Tele Locher",
+    description: (
+      <ul className="list-disc list-outside ml-4 space-y-1">
+        <li>IT consulting and support for enterprise clients.</li>
+        <li>Server configuration (Wintel, Linux) and network planning.</li>
+        <li>Corporate design across web and print.</li>
+      </ul>
+    ),
+  },
+  {
+    period: "May 2007 - Aug 2008",
+    title: "Service & Support Agent",
+    company: "Mister Q AG",
+    description: "Application and system support (Windows/Mac), including hardware maintenance.",
+  },
+];
+
+const educationEn = [
+  {
+    period: "Oct 2024 - May 2025",
+    degree: "Executive MBA in General Management",
+    school: "HWZ University of Applied Sciences",
+    location: "Zurich, Switzerland",
+    details: "Focus: Strategic Management, Leadership & Digital Transformation",
+  },
+  {
+    period: "Mar 2025",
+    degree: "International Management Program",
+    school: "University of Virginia Darden School of Business",
+    location: "Charlottesville, VA, USA",
+    details: "Executive education module",
+  },
+  {
+    period: "Jan 2018 - Oct 2021",
+    degree: "MAS in Digital Business",
+    school: "HWZ University of Applied Sciences",
+    location: "Zurich, Switzerland",
+    details: "Master of Advanced Studies",
+  },
+  {
+    period: "2019",
+    degree: "CAS Digital Finance",
+    school: "HWZ University of Applied Sciences",
+    location: "Zurich, Switzerland",
+    details: "Certificate of Advanced Studies",
+  },
+  {
+    period: "2019",
+    degree: "CAS Disruptive Technologies",
+    school: "HWZ University of Applied Sciences",
+    location: "Zurich, Switzerland",
+    details: "Certificate of Advanced Studies",
+  },
+  {
+    period: "2018 - 2019",
+    degree: "CAS Digital Leadership",
+    school: "HWZ University of Applied Sciences",
+    location: "Zurich, Switzerland",
+    details: "Certificate of Advanced Studies",
+  },
+  {
+    period: "2013 - 2016",
+    degree: "Advanced Federal Diploma of Higher Education in Business Information Technology",
+    school: "IFA College of Professional Education",
+    location: "Zurich, Switzerland",
+    details: "Professional Bachelor ODEC (Higher Professional Education)",
+  },
+  {
+    period: "2010 - 2013",
+    degree: "Federal VET Diploma in Information Technology (EFZ), Application Development",
+    school: "WISS Schools for Economy and Computer Science",
+    location: "Zurich, Switzerland",
+    details: "Specialization in application development",
+  },
+];
+
 const topSkills = [
   "ICT-Projektleitung (öffentlicher Sektor)",
   "Plattformverantwortung (Web & Customer Journey)",
@@ -485,6 +669,8 @@ export default async function CV({
   const additionalSkillsLocalized = locale === "en" ? additionalSkillsEn : additionalSkills;
   const languagesLocalized = locale === "en" ? languagesEn : languages;
   const certificationsLocalized = locale === "en" ? certificationsEn : certifications;
+  const experienceLocalized = locale === "en" ? experienceEn : experienceDe;
+  const educationLocalized = locale === "en" ? educationEn : educationDe;
   const t = uiText[locale];
   const personJsonLd = {
     "@context": "https://schema.org",
@@ -513,7 +699,9 @@ export default async function CV({
     ],
   };
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans selection:bg-amber-500/30 print:bg-white print:text-black">
+    <div
+      className="min-h-screen bg-background text-foreground font-sans selection:bg-amber-500/30 print:bg-white print:text-black"
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
@@ -540,7 +728,7 @@ export default async function CV({
             <div className="md:hidden print:hidden absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent z-20 pointer-events-none" />
             
             <div className="md:hidden print:hidden absolute bottom-0 left-0 right-0 p-6 flex flex-col justify-end z-30">
-                <h1 className="text-3xl font-bold tracking-tight text-foreground mb-1 drop-shadow-md">{profile.name}</h1>
+                <div className="text-3xl font-bold tracking-tight text-foreground mb-1 drop-shadow-md">{profile.name}</div>
                 <p className="text-lg text-accent font-medium mb-3 drop-shadow-md">{profile.title}</p>
                 <p className="text-sm text-muted-foreground/90 leading-relaxed line-clamp-4 text-shadow-sm font-medium">
                   {profile.summaryLines.join(" ")}
@@ -561,7 +749,7 @@ export default async function CV({
           <div className="p-6 md:p-8 print:p-3 space-y-10 print:space-y-4">
             
             {/* Contact Info */}
-            <div className="space-y-4">
+            <div id="contact" className="space-y-4">
               <SidebarItem icon={<Mail className="w-4 h-4" />} label={t.email} value={profile.email} link={`mailto:${profile.email}`} />
               <SidebarItem icon={<Phone className="w-4 h-4" />} label={t.phone} value={profile.phone} link={`tel:${profile.phone}`} />
               <SidebarItem
@@ -579,6 +767,20 @@ export default async function CV({
                 <SidebarItem icon={<Car className="w-4 h-4" />} label={t.drivingLicense} value={t.drivingLicenseValue} />
               </div>
             </div>
+
+            <nav className="pt-2 border-t border-sidebar-border">
+              <h3 className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground mb-2">
+                {t.quickLinks}
+              </h3>
+              <div className="space-y-1.5">
+                <a href="#experience" className="text-xs text-sidebar-foreground hover:text-foreground transition-colors block">
+                  {t.toExperience}
+                </a>
+                <a href="#education" className="text-xs text-sidebar-foreground hover:text-foreground transition-colors block">
+                  {t.toEducation}
+                </a>
+              </div>
+            </nav>
 
             {/* Top Skills */}
             <div>
@@ -676,18 +878,18 @@ export default async function CV({
           {/* Content Below */}
           <div className="p-6 md:p-12 print:p-5">
             {/* Experience */}
-            <Section title={t.experience} icon={<Briefcase className="w-5 h-5" />}>
+            <Section id="experience" title={t.experience} icon={<Briefcase className="w-5 h-5" />}>
               <div className="space-y-10 print:space-y-5">
-                {experience.map((item, i) => (
+                {experienceLocalized.map((item, i) => (
                   <ExperienceCard key={i} {...item} />
                 ))}
               </div>
             </Section>
 
             {/* Education - Grid Layout for Compactness */}
-            <Section title={t.education} icon={<GraduationCap className="w-5 h-5" />}>
+            <Section id="education" title={t.education} icon={<GraduationCap className="w-5 h-5" />}>
               <div className="grid md:grid-cols-2 gap-4 print:grid-cols-1 print:gap-2.5">
-                {education.map((item, i) => (
+                {educationLocalized.map((item, i) => (
                   <EducationCard key={i} {...item} />
                 ))}
               </div>
