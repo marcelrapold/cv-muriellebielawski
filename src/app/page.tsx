@@ -129,10 +129,10 @@ const SidebarItem = ({
   link?: string;
   multiline?: boolean;
 }) => (
-  <div className="flex items-center gap-3 text-sm group">
+  <div className="flex items-center gap-3 text-sm print:text-[11px] group">
     <div className="text-muted-foreground group-hover:text-accent transition-colors shrink-0">{icon}</div>
     <div className="overflow-hidden">
-      <div className="text-muted-foreground text-xs">{label}</div>
+      <div className="text-muted-foreground text-xs print:text-[10px]">{label}</div>
       {link ? (
         <a
           href={link}
@@ -479,7 +479,7 @@ export default async function CV({
   searchParams: Promise<{ lang?: string }>;
 }) {
   const { lang } = await searchParams;
-  const locale = lang === "en" ? "en" : "de";
+  const locale = lang === "de" ? "de" : "en";
   const profile = locale === "en" ? profileEn : profileDe;
   const topSkillsLocalized = locale === "en" ? topSkillsEn : topSkills;
   const additionalSkillsLocalized = locale === "en" ? additionalSkillsEn : additionalSkills;
@@ -513,19 +513,19 @@ export default async function CV({
     ],
   };
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans selection:bg-amber-500/30">
+    <div className="min-h-screen bg-background text-foreground font-sans selection:bg-amber-500/30 print:bg-white print:text-black">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
       
-      <div className="max-w-7xl mx-auto md:grid md:grid-cols-[300px_1fr] min-h-screen print:grid print:grid-cols-[280px_1fr] print:min-h-0">
+      <div className="max-w-7xl mx-auto md:grid md:grid-cols-[300px_1fr] min-h-screen print:grid print:grid-cols-[220px_1fr] print:min-h-0">
         
         {/* --- Sidebar (Left) --- */}
-        <aside className="bg-sidebar border-r border-sidebar-border md:sticky md:top-0 md:h-screen md:overflow-y-auto flex flex-col transition-colors duration-300 print:static print:h-auto print:overflow-visible print:border-r print:border-b-0 print:[break-inside:avoid]">
+        <aside className="bg-sidebar border-r border-sidebar-border md:sticky md:top-0 md:h-screen md:overflow-y-auto flex flex-col transition-colors duration-300 print:bg-white print:static print:h-auto print:overflow-visible print:border-r print:border-b-0 print:[break-inside:avoid]">
           
           {/* Profile Image - Full Width & Matched Height */}
-          <div className="relative w-full aspect-[3/4] print:aspect-auto print:h-56 overflow-hidden bg-sidebar border-b border-sidebar-border shrink-0">
+          <div className="relative w-full aspect-[3/4] print:aspect-auto print:h-44 overflow-hidden bg-sidebar border-b border-sidebar-border shrink-0">
             <Avatar
               staticSrc="/mra.png"
               animatedSrc="/mra.gif"
@@ -558,7 +558,7 @@ export default async function CV({
           </div>
 
           {/* Sidebar Content */}
-          <div className="p-6 md:p-8 print:p-4 space-y-10 print:space-y-6">
+          <div className="p-6 md:p-8 print:p-3 space-y-10 print:space-y-4">
             
             {/* Contact Info */}
             <div className="space-y-4">
@@ -585,23 +585,23 @@ export default async function CV({
               <h3 className="text-sm font-bold text-foreground uppercase tracking-wider mb-4 flex items-center gap-2">
                 <Cpu className="w-4 h-4 text-accent" /> {t.coreSkills}
               </h3>
-              <div className="space-y-2">
+              <div className="space-y-2 print:space-y-1.5">
                 {topSkillsLocalized.map((skill) => (
                   <div
                     key={skill}
-                    className="text-xs text-sidebar-foreground leading-snug border-l-2 border-accent/40 pl-2 py-0.5"
+                    className="text-xs print:text-[10px] text-sidebar-foreground leading-snug border-l-2 border-accent/40 pl-2 py-0.5"
                   >
                     {skill}
                   </div>
                 ))}
               </div>
-              <div className="mt-5">
+              <div className="mt-5 print:mt-3">
                 <h4 className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground mb-2">
                   {t.additional}
                 </h4>
-                <div className="space-y-1.5">
+                <div className="space-y-1 print:space-y-0.5">
                   {additionalSkillsLocalized.map((skill) => (
-                    <div key={skill} className="text-[11px] text-muted-foreground leading-snug">
+                    <div key={skill} className="text-[11px] print:text-[10px] text-muted-foreground leading-snug">
                       {skill}
                     </div>
                   ))}
@@ -614,7 +614,7 @@ export default async function CV({
               <h3 className="text-sm font-bold text-foreground uppercase tracking-wider mb-4 flex items-center gap-2">
                 <Languages className="w-4 h-4 text-accent" /> {t.languages}
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-3 print:space-y-2">
                 {languagesLocalized.map((l) => (
                   <div key={l.lang}>
                     <div className="text-sm text-foreground font-medium">{l.lang}</div>
@@ -629,9 +629,9 @@ export default async function CV({
               <h3 className="text-sm font-bold text-foreground uppercase tracking-wider mb-4 flex items-center gap-2">
                 <BadgeCheck className="w-4 h-4 text-accent" /> {t.certifications}
               </h3>
-              <ul className="space-y-2">
+              <ul className="space-y-2 print:space-y-1">
                 {certificationsLocalized.map((cert) => (
-                  <li key={cert} className="text-xs text-muted-foreground flex items-start gap-2">
+                  <li key={cert} className="text-xs print:text-[10px] text-muted-foreground flex items-start gap-2">
                     <span className="w-1 h-1 bg-accent rounded-full mt-1.5 shrink-0" />
                     {cert}
                   </li>
@@ -645,7 +645,7 @@ export default async function CV({
         <main className="flex flex-col">
           
           {/* Header & Summary Section - Height Matched to Image (approx) */}
-          <div className="hidden md:flex print:flex flex-col justify-center p-6 md:p-12 print:p-6 border-b border-border min-h-[400px] print:min-h-0 relative">
+          <div className="hidden md:flex print:flex flex-col justify-center p-6 md:p-12 print:p-5 border-b border-border min-h-[400px] print:min-h-0 relative">
             <div className="absolute top-6 right-6 print:hidden">
               <div className="flex items-center gap-2">
                 <LanguageToggle />
@@ -663,7 +663,7 @@ export default async function CV({
             </div>
 
             <div className="max-w-3xl">
-              <p className="text-lg print:text-base leading-relaxed text-muted-foreground border-l-4 border-accent/20 pl-6 print:pl-4">
+              <p className="text-lg print:text-[15px] leading-relaxed text-muted-foreground border-l-4 border-accent/20 pl-6 print:pl-4">
                 {profile.summaryLines.map((line, i) => (
                   <span key={i} className="block">
                     {line}
@@ -674,10 +674,10 @@ export default async function CV({
           </div>
 
           {/* Content Below */}
-          <div className="p-6 md:p-12 print:p-6">
+          <div className="p-6 md:p-12 print:p-5">
             {/* Experience */}
             <Section title={t.experience} icon={<Briefcase className="w-5 h-5" />}>
-              <div className="space-y-10 print:space-y-6">
+              <div className="space-y-10 print:space-y-5">
                 {experience.map((item, i) => (
                   <ExperienceCard key={i} {...item} />
                 ))}
@@ -686,7 +686,7 @@ export default async function CV({
 
             {/* Education - Grid Layout for Compactness */}
             <Section title={t.education} icon={<GraduationCap className="w-5 h-5" />}>
-              <div className="grid md:grid-cols-2 gap-4 print:grid-cols-1 print:gap-3">
+              <div className="grid md:grid-cols-2 gap-4 print:grid-cols-1 print:gap-2.5">
                 {education.map((item, i) => (
                   <EducationCard key={i} {...item} />
                 ))}

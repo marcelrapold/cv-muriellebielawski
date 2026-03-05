@@ -7,14 +7,14 @@ import { cn } from "@/lib/utils";
 export function LanguageToggle({ className }: { className?: string }) {
   const router = useRouter();
   const pathname = usePathname();
-  const [activeLang, setActiveLang] = useState<"de" | "en">("de");
+  const [activeLang, setActiveLang] = useState<"de" | "en">("en");
 
   useEffect(() => {
     if (typeof window === "undefined") {
       return;
     }
     const params = new URLSearchParams(window.location.search);
-    setActiveLang(params.get("lang") === "en" ? "en" : "de");
+    setActiveLang(params.get("lang") === "de" ? "de" : "en");
   }, []);
 
   const setLang = (lang: "de" | "en") => {
