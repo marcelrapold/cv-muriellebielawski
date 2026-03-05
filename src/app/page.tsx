@@ -151,7 +151,7 @@ const SidebarItem = ({
           target="_blank"
           rel="noopener noreferrer"
           className={cn(
-            "text-sidebar-foreground hover:text-foreground transition-colors block font-medium",
+            "text-foreground hover:text-accent transition-colors block font-medium",
             multiline ? "whitespace-pre-line leading-snug" : "truncate"
           )}
         >
@@ -160,7 +160,7 @@ const SidebarItem = ({
       ) : (
         <div
           className={cn(
-            "text-sidebar-foreground font-medium",
+            "text-foreground font-medium",
             multiline ? "whitespace-pre-line leading-snug" : "truncate"
           )}
         >
@@ -229,10 +229,10 @@ const additionalSkillsEn = [
 ];
 
 const languagesEn = [
-  { lang: "German", level: "Native / Bilingual" },
-  { lang: "English", level: "Full Professional" },
-  { lang: "Spanish", level: "Native / Bilingual" },
-  { lang: "French", level: "Elementary" },
+  { lang: "German", flagCode: "ch", level: "Native / Bilingual" },
+  { lang: "English", flagCode: "gb", level: "Full Professional" },
+  { lang: "Spanish", flagCode: "es", level: "Native / Bilingual" },
+  { lang: "French", flagCode: "fr", level: "Elementary" },
 ];
 
 const certificationsEn = [
@@ -642,10 +642,10 @@ const additionalSkills = [
 ];
 
 const languages = [
-  { lang: "Deutsch", level: "Muttersprache / Zweisprachig" },
-  { lang: "Englisch", level: "Verhandlungssicher" },
-  { lang: "Spanisch", level: "Muttersprache / Zweisprachig" },
-  { lang: "Französisch", level: "Grundkenntnisse" },
+  { lang: "Deutsch", flagCode: "ch", level: "Muttersprache / Zweisprachig" },
+  { lang: "Englisch", flagCode: "gb", level: "Verhandlungssicher" },
+  { lang: "Spanisch", flagCode: "es", level: "Muttersprache / Zweisprachig" },
+  { lang: "Französisch", flagCode: "fr", level: "Grundkenntnisse" },
 ];
 
 const certifications = [
@@ -819,7 +819,17 @@ export default async function CV({
               <div className="space-y-3 print:space-y-2">
                 {languagesLocalized.map((l) => (
                   <div key={l.lang}>
-                    <div className="text-sm text-foreground font-medium">{l.lang}</div>
+                    <div className="text-sm text-foreground font-medium flex items-center gap-1.5">
+                      <img
+                        src={`/flags/${l.flagCode}.svg`}
+                        alt=""
+                        aria-hidden="true"
+                        className="w-4 h-3 rounded-[2px] object-cover shrink-0"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <span>{l.lang}</span>
+                    </div>
                     <div className="text-xs text-muted-foreground">{l.level}</div>
                   </div>
                 ))}
