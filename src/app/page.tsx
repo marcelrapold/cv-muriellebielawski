@@ -395,7 +395,7 @@ const experienceDe = [
 const educationDe = [
   {
     period: "Oct 2024 - May 2025",
-    degree: "Executive MBA in General Management",
+    degree: "Executive Master of Business Administration in Management",
     school: "HWZ University of Applied Sciences",
     location: "Zurich, Switzerland",
     details: "Schwerpunkt: Strategisches Management, Leadership & Digitale Transformation",
@@ -560,7 +560,7 @@ const experienceEn = [
 const educationEn = [
   {
     period: "Oct 2024 - May 2025",
-    degree: "Executive MBA in General Management",
+    degree: "Executive Master of Business Administration in Management",
     school: "HWZ University of Applied Sciences",
     location: "Zurich, Switzerland",
     details: "Focus: Strategic Management, Leadership & Digital Transformation",
@@ -713,7 +713,7 @@ export default async function CV({
         <aside className="bg-sidebar border-r border-sidebar-border md:sticky md:top-0 md:h-screen md:overflow-y-auto flex flex-col transition-colors duration-300 print:bg-white print:static print:h-auto print:overflow-visible print:border-r print:border-b-0 print:[break-inside:avoid]">
           
           {/* Profile Image - Full Width & Matched Height */}
-          <div className="relative w-full aspect-[3/4] print:aspect-auto print:h-56 overflow-hidden bg-sidebar border-b border-sidebar-border shrink-0">
+          <div className="relative w-full aspect-[3/4] print:aspect-[3/4] print:h-auto overflow-hidden bg-sidebar border-b border-sidebar-border shrink-0">
             <div className="print:hidden absolute inset-0">
               <Avatar
                 staticSrc="/mra.png"
