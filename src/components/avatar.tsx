@@ -13,6 +13,7 @@ interface AvatarProps {
 
 const AUTO_START_MS = 30000;
 const GIF_DURATION_MS = 5040;
+const ENABLE_HOVER_ANIMATION = false;
 
 export function Avatar({ staticSrc, animatedSrc, alt, className, priority }: AvatarProps) {
   const [mounted, setMounted] = useState(false);
@@ -80,7 +81,11 @@ export function Avatar({ staticSrc, animatedSrc, alt, className, priority }: Ava
   }
 
   return (
-    <div className="absolute inset-0 z-0" onMouseEnter={playGifOnce} onMouseLeave={stopGif}>
+    <div
+      className="absolute inset-0 z-0"
+      onMouseEnter={ENABLE_HOVER_ANIMATION ? playGifOnce : undefined}
+      onMouseLeave={ENABLE_HOVER_ANIMATION ? stopGif : undefined}
+    >
       {/* Static Image - Always rendered, stays in background when GIF is shown */}
       <img
         src={staticSrc}

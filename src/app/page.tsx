@@ -420,16 +420,16 @@ const topSkills = [
 ];
 
 const languages = [
-  { lang: "Deutsch", flagCode: "ch", level: "Muttersprache" },
-  { lang: "Englisch", flagCode: "gb", level: "C1" },
-  { lang: "Ukrainisch", flagCode: "us", level: "A1" },
+  { lang: "Deutsch", flagCode: "de", level: "Muttersprache" },
+  { lang: "Englisch", flagCode: "us", level: "C1" },
+  { lang: "Ukrainisch", flagCode: "ua", level: "A1" },
   { lang: "Spanisch", flagCode: "es", level: "A1" },
 ];
 
 const languagesEn = [
-  { lang: "German", flagCode: "ch", level: "Native tongue" },
-  { lang: "English", flagCode: "gb", level: "C1" },
-  { lang: "Ukrainian", flagCode: "us", level: "A1" },
+  { lang: "German", flagCode: "de", level: "Native tongue" },
+  { lang: "English", flagCode: "us", level: "C1" },
+  { lang: "Ukrainian", flagCode: "ua", level: "A1" },
   { lang: "Spanish", flagCode: "es", level: "A1" },
 ];
 
