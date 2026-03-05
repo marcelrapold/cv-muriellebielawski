@@ -458,7 +458,7 @@ const experienceEn = [
     company: "Zürcher Verkehrsverbund (ZVV)",
     description: (
       <ul className="list-disc list-outside ml-4 space-y-2">
-        <li><strong className="text-foreground">Deputy ICT project lead for AI product and platform initiatives:</strong> Leading strategic AI initiatives and platform development.</li>
+        <li><strong className="text-foreground">ICT project lead for AI product and platform initiatives:</strong> Leading strategic AI initiatives and platform development.</li>
         <li><strong className="text-foreground">Digital platform ownership:</strong> End-to-end operation and evolution of zvv.ch as a central customer interface, including IT architecture, hosting, and test management.</li>
         <li><strong className="text-foreground">Digitalization & app ecosystem:</strong> Co-responsible for the web and mobile portfolio. Built new services to improve customer experience.</li>
         <li><strong className="text-foreground">Ticket shop & digital channels:</strong> Ensured interoperability between the ticket shop and digital channels and contributed to account roadmap and frontend topics.</li>
@@ -713,7 +713,7 @@ export default async function CV({
         <aside className="bg-sidebar border-r border-sidebar-border md:sticky md:top-0 md:h-screen md:overflow-y-auto flex flex-col transition-colors duration-300 print:bg-white print:static print:h-auto print:overflow-visible print:border-r print:border-b-0 print:[break-inside:avoid]">
           
           {/* Profile Image - Full Width & Matched Height */}
-          <div className="relative w-full aspect-[3/4] print:aspect-auto print:h-44 overflow-hidden bg-sidebar border-b border-sidebar-border shrink-0">
+          <div className="relative w-full aspect-[3/4] print:aspect-auto print:h-56 overflow-hidden bg-sidebar border-b border-sidebar-border shrink-0">
             <div className="print:hidden absolute inset-0">
               <Avatar
                 staticSrc="/mra.png"
