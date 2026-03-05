@@ -214,8 +214,8 @@ const topSkillsEn = [
   "Release & Change Management",
   "Workflow Automation (n8n)",
   "AEM / Enterprise CMS Governance",
-  "Identity & SSO Foundations\n(OIDC/OAuth2, IdP)",
-  "Proxmox + Docker\n(Practitioner)",
+  "Identity & SSO\n(OIDC/OAuth2, IdP)",
+  "Proxmox + Docker",
 ];
 
 const additionalSkillsEn = [
@@ -627,8 +627,8 @@ const topSkills = [
   "Release- & Change-Management",
   "Workflow-Automation (n8n)",
   "AEM / Enterprise CMS Governance",
-  "Identity- & SSO-Basis\n(OIDC/OAuth2, IdP)",
-  "Proxmox + Docker\n(Praxis)",
+  "Identity- & SSO\n(OIDC/OAuth2, IdP)",
+  "Proxmox + Docker",
 ];
 
 const additionalSkills = [
@@ -688,7 +688,7 @@ export default async function CV({
       addressCountry: "CH",
     },
     sameAs: [`https://linkedin.com/in/${profile.linkedin}`],
-    url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://marcelrapold.com",
+    url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://marcel.rapold.io",
     knowsAbout: [
       "AI Product Management",
       "Platform Leadership",
@@ -756,7 +756,7 @@ export default async function CV({
           </div>
 
           {/* Sidebar Content */}
-          <div className="p-6 md:p-8 print:p-3 space-y-10 print:space-y-4">
+          <div className="p-6 md:p-8 print:p-3 space-y-10 print:space-y-3">
             
             {/* Contact Info */}
             <div id="contact" className="space-y-4 print-avoid-break">
@@ -797,11 +797,11 @@ export default async function CV({
               <h3 className="text-sm font-bold text-foreground uppercase tracking-wider mb-4 flex items-center gap-2 print-keep-heading">
                 <Cpu className="w-4 h-4 text-accent" /> {t.coreSkills}
               </h3>
-              <div className="space-y-2 print:space-y-1.5">
+              <div className="space-y-2 print:space-y-1">
                 {topSkillsLocalized.map((skill) => (
                   <div
                     key={skill}
-                    className="text-xs print:text-[10px] text-sidebar-foreground leading-snug whitespace-pre-line border-l-2 border-accent/40 pl-2 py-0.5 print-avoid-break"
+                    className="text-xs print:text-[9px] text-sidebar-foreground leading-snug print:leading-tight whitespace-pre-line border-l-2 border-accent/40 pl-2 py-0.5 print:py-0 print-avoid-break"
                   >
                     {skill}
                   </div>
