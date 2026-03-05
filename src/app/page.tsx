@@ -175,7 +175,7 @@ const SidebarItem = ({
 
 const profileDe = {
   name: "Marcel Rapold",
-  title: "ICT-Projektleiter, KI-Produkt- & Plattformleiter | EMBA",
+  title: "ICT-Projektleiter | KI-Produkt- & Plattformleiter | EMBA",
   location: "Weinbergstrasse 5\n8703 Erlenbach\nZürich, Switzerland",
   email: "marcel@marcelrapold.com",
   phone: "+41 76 566 90 80",
@@ -191,7 +191,7 @@ const profileDe = {
 
 const profileEn = {
   name: "Marcel Rapold",
-  title: "ICT Project Lead, AI Product & Platform Lead | EMBA",
+  title: "ICT Project Lead | AI Product & Platform Lead | EMBA",
   location: "Weinbergstrasse 5\n8703 Erlenbach\nZurich, Switzerland",
   email: "marcel@marcelrapold.com",
   phone: "+41 76 566 90 80",
@@ -289,7 +289,7 @@ const uiText = {
 const experienceDe = [
   {
     period: "Jan 2022 - Present",
-    title: "ICT-Projektleiter, KI-Produkt & Plattform",
+    title: "ICT-Projektleiter | KI-Produkt & Plattform",
     company: "Zürcher Verkehrsverbund (ZVV)",
     description: (
       <ul className="list-disc list-outside ml-4 space-y-2">
@@ -305,7 +305,7 @@ const experienceDe = [
   },
   {
     period: "Jun 2016 - Dec 2021",
-    title: "Applikationsmanager / Product Owner",
+    title: "Applikationsmanager | Product Owner",
     company: "Zürcher Verkehrsverbund (ZVV)",
     description: (
       <ul className="list-disc list-outside ml-4 space-y-1">
@@ -454,7 +454,7 @@ const educationDe = [
 const experienceEn = [
   {
     period: "Jan 2022 - Present",
-    title: "ICT Project Lead, AI Product & Platform",
+    title: "ICT Project Lead | AI Product & Platform",
     company: "Zürcher Verkehrsverbund (ZVV)",
     description: (
       <ul className="list-disc list-outside ml-4 space-y-2">
@@ -470,7 +470,7 @@ const experienceEn = [
   },
   {
     period: "Jun 2016 - Dec 2021",
-    title: "Application Manager / Product Owner",
+    title: "Application Manager | Product Owner",
     company: "Zürcher Verkehrsverbund (ZVV)",
     description: (
       <ul className="list-disc list-outside ml-4 space-y-1">
@@ -768,7 +768,7 @@ export default async function CV({
               </div>
             </div>
 
-            <nav className="pt-2 border-t border-sidebar-border">
+            <nav className="pt-2 border-t border-sidebar-border print:hidden">
               <h3 className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground mb-2">
                 {t.quickLinks}
               </h3>
@@ -897,7 +897,7 @@ export default async function CV({
 
             {/* Footer */}
             <footer className="border-t border-border pt-8 mt-16 print:pt-5 print:mt-8 text-muted-foreground text-sm">
-              <p>© {new Date().getFullYear()} Marcel Rapold • Digital Leader</p>
+              <p>© 2026 Marcel Rapold</p>
             </footer>
           </div>
 

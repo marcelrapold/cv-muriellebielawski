@@ -7,7 +7,13 @@ import { cn } from "@/lib/utils";
 export function LanguageToggle({ className }: { className?: string }) {
   const router = useRouter();
   const pathname = usePathname();
-  const [activeLang, setActiveLang] = useState<"de" | "en">("en");
+  const [activeLang, setActiveLang] = useState<"de" | "en">(() => {
+    if (typeof window === "undefined") {
+      return "en";
+    }
+    const params = new URLSearchParams(window.location.search);
+    return params.get("lang") === "de" ? "de" : "en";
+  });
 
   useEffect(() => {
     if (typeof window === "undefined") {
@@ -24,10 +30,15 @@ export function LanguageToggle({ className }: { className?: string }) {
     params.set("lang", lang);
     setActiveLang(lang);
     router.replace(`${pathname}?${params.toString()}`);
+    router.refresh();
   };
 
   const toggleLang = () => {
-    setLang(activeLang === "de" ? "en" : "de");
+    const params = new URLSearchParams(
+      typeof window !== "undefined" ? window.location.search : ""
+    );
+    const currentLang = params.get("lang") === "de" ? "de" : "en";
+    setLang(currentLang === "de" ? "en" : "de");
   };
 
   return (

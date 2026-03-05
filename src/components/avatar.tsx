@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 interface AvatarProps {
@@ -83,16 +82,17 @@ export function Avatar({ staticSrc, animatedSrc, alt, className, priority }: Ava
   return (
     <div className="absolute inset-0 z-0" onMouseEnter={playGifOnce} onMouseLeave={stopGif}>
       {/* Static Image - Always rendered, stays in background when GIF is shown */}
-      <Image
+      <img
         src={staticSrc}
         alt={alt}
-        fill
         className={cn(
-          "w-full h-full object-cover object-center transition-opacity duration-300 ease-out",
+          "absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-300 ease-out",
           showGif ? "opacity-0" : "opacity-100",
           className
         )}
-        priority={priority}
+        loading={priority ? "eager" : "lazy"}
+        decoding="async"
+        draggable={false}
       />
       
       {/* Animated GIF - soft transition to avoid visual jump */}
