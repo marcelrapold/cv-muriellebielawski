@@ -241,7 +241,6 @@ const certificationsEn = [
   "Conflict Management & Resolution",
   "Agile Software Development",
   "Project Management Fundamentals",
-  "Programming Fundamentals",
 ];
 
 const uiText = {
@@ -707,7 +706,7 @@ export default async function CV({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
       
-      <div className="max-w-7xl mx-auto md:[--hero-row-h:24rem] lg:[--hero-row-h:25rem] md:grid md:grid-cols-[300px_1fr] min-h-screen print:grid print:grid-cols-[220px_1fr] print:min-h-0">
+      <div className="max-w-7xl mx-auto md:[--hero-row-h:24rem] lg:[--hero-row-h:25rem] md:grid md:grid-cols-[300px_1fr] min-h-screen print:grid print:grid-cols-[200px_1fr] print:min-h-0">
         
         {/* --- Sidebar (Left) --- */}
         <aside className="bg-sidebar border-r border-sidebar-border md:sticky md:top-0 md:h-screen md:overflow-y-auto flex flex-col transition-colors duration-300 print:bg-white print:static print:h-auto print:overflow-visible print:border-r print:border-b-0 print:[break-inside:avoid]">
@@ -756,10 +755,10 @@ export default async function CV({
           </div>
 
           {/* Sidebar Content */}
-          <div className="p-6 md:p-8 print:p-3 space-y-10 print:space-y-3">
+          <div className="p-6 md:p-8 print:p-2.5 space-y-10 print:space-y-2.5">
             
             {/* Contact Info */}
-            <div id="contact" className="space-y-4 print-avoid-break">
+            <div id="contact" className="space-y-4 print:space-y-3 print-avoid-break">
               <SidebarItem icon={<Mail className="w-4 h-4" />} label={t.email} value={profile.email} link={`mailto:${profile.email}`} />
               <SidebarItem icon={<Phone className="w-4 h-4" />} label={t.phone} value={profile.phone} link={`tel:${profile.phone}`} />
               <SidebarItem
@@ -771,7 +770,7 @@ export default async function CV({
               />
               <SidebarItem icon={<Linkedin className="w-4 h-4" />} label="LinkedIn" value="linkedin.com/in/marcelrapold" link={`https://linkedin.com/in/${profile.linkedin}`} />
               
-              <div className="pt-4 border-t border-sidebar-border space-y-4">
+              <div className="pt-4 print:pt-3 border-t border-sidebar-border space-y-4 print:space-y-3">
                 <SidebarItem icon={<Calendar className="w-4 h-4" />} label={t.dateOfBirth} value={locale === "en" ? "July 5, 1985" : "5. Juli 1985"} />
                 <SidebarItem icon={<Flag className="w-4 h-4" />} label={t.nationality} value={t.nationalityValue} />
                 <SidebarItem icon={<Car className="w-4 h-4" />} label={t.drivingLicense} value={t.drivingLicenseValue} />
@@ -793,9 +792,12 @@ export default async function CV({
             </nav>
 
             {/* Top Skills */}
-            <div className="print-avoid-break">
+            <div>
               <h3 className="text-sm font-bold text-foreground uppercase tracking-wider mb-4 flex items-center gap-2 print-keep-heading">
-                <Cpu className="w-4 h-4 text-accent" /> {t.coreSkills}
+                <span className="inline-flex w-4 justify-center shrink-0">
+                  <Cpu className="w-4 h-4 text-accent" />
+                </span>
+                {t.coreSkills}
               </h3>
               <div className="space-y-2 print:space-y-1">
                 {topSkillsLocalized.map((skill) => (
@@ -808,7 +810,7 @@ export default async function CV({
                 ))}
               </div>
               <div className="mt-5 print:mt-3 print-avoid-break">
-                <h4 className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground mb-2 print-keep-heading">
+                <h4 className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground mb-2 pl-6 print:pl-6 print-keep-heading">
                   {t.additional}
                 </h4>
                 <div className="space-y-1 print:space-y-0.5">
@@ -824,7 +826,10 @@ export default async function CV({
             {/* Languages */}
             <div className="print-avoid-break">
               <h3 className="text-sm font-bold text-foreground uppercase tracking-wider mb-4 flex items-center gap-2 print-keep-heading">
-                <Languages className="w-4 h-4 text-accent" /> {t.languages}
+                <span className="inline-flex w-4 justify-center shrink-0">
+                  <Languages className="w-4 h-4 text-accent" />
+                </span>
+                {t.languages}
               </h3>
               <div className="space-y-3 print:space-y-2 print-keep-list">
                 {languagesLocalized.map((l) => (
@@ -849,7 +854,10 @@ export default async function CV({
             {/* Certifications */}
             <div className="print-avoid-break">
               <h3 className="text-sm font-bold text-foreground uppercase tracking-wider mb-4 flex items-center gap-2 print-keep-heading">
-                <BadgeCheck className="w-4 h-4 text-accent" /> {t.certifications}
+                <span className="inline-flex w-4 justify-center shrink-0">
+                  <BadgeCheck className="w-4 h-4 text-accent" />
+                </span>
+                {t.certifications}
               </h3>
               <ul className="space-y-2 print:space-y-1 print-keep-list">
                 {certificationsLocalized.map((cert) => (
