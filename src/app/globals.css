@@ -157,9 +157,25 @@
   }
 
   section,
-  article,
-  .print-avoid-break {
+  article {
     break-inside: auto;
     page-break-inside: auto;
+  }
+
+  .print-avoid-break,
+  .print-keep {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .print-keep-heading {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .print-keep-list > li,
+  .print-experience-block li {
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 }

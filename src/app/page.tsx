@@ -65,7 +65,7 @@ const ExperienceCard = ({
   description: ReactNode; 
   icon?: ReactNode;
 }) => (
-  <div className="relative pl-8 md:pl-0 print:pl-0">
+  <div className="relative pl-8 md:pl-0 print:pl-0 print-keep">
     {/* Mobile Timeline Line */}
     <div className="absolute left-3 top-2 bottom-0 w-px bg-border md:hidden print:hidden" />
     
@@ -96,7 +96,7 @@ const ExperienceCard = ({
             {company}
           </div>
         </div>
-        <div className="text-muted-foreground text-sm leading-relaxed">
+        <div className="text-muted-foreground text-sm leading-relaxed print-experience-block">
           {description}
         </div>
       </div>
@@ -214,8 +214,8 @@ const topSkillsEn = [
   "Release & Change Management",
   "Workflow Automation (n8n)",
   "AEM / Enterprise CMS Governance",
-  "Identity & SSO Foundations (OIDC/OAuth2, IdP)",
-  "Proxmox + Docker (Practitioner)",
+  "Identity & SSO Foundations\n(OIDC/OAuth2, IdP)",
+  "Proxmox + Docker\n(Practitioner)",
 ];
 
 const additionalSkillsEn = [
@@ -230,8 +230,8 @@ const additionalSkillsEn = [
 
 const languagesEn = [
   { lang: "German", flagCode: "ch", level: "Native / Bilingual" },
-  { lang: "English", flagCode: "gb", level: "Full Professional" },
-  { lang: "Spanish", flagCode: "es", level: "Native / Bilingual" },
+  { lang: "English", flagCode: "us", level: "Full Professional" },
+  { lang: "Spanish", flagCode: "mx", level: "Native / Bilingual" },
   { lang: "French", flagCode: "fr", level: "Elementary" },
 ];
 
@@ -627,8 +627,8 @@ const topSkills = [
   "Release- & Change-Management",
   "Workflow-Automation (n8n)",
   "AEM / Enterprise CMS Governance",
-  "Identity- & SSO-Basis (OIDC/OAuth2, IdP)",
-  "Proxmox + Docker (Praxis)",
+  "Identity- & SSO-Basis\n(OIDC/OAuth2, IdP)",
+  "Proxmox + Docker\n(Praxis)",
 ];
 
 const additionalSkills = [
@@ -643,8 +643,8 @@ const additionalSkills = [
 
 const languages = [
   { lang: "Deutsch", flagCode: "ch", level: "Muttersprache / Zweisprachig" },
-  { lang: "Englisch", flagCode: "gb", level: "Verhandlungssicher" },
-  { lang: "Spanisch", flagCode: "es", level: "Muttersprache / Zweisprachig" },
+  { lang: "Englisch", flagCode: "us", level: "Verhandlungssicher" },
+  { lang: "Spanisch", flagCode: "mx", level: "Muttersprache / Zweisprachig" },
   { lang: "Französisch", flagCode: "fr", level: "Grundkenntnisse" },
 ];
 
@@ -759,7 +759,7 @@ export default async function CV({
           <div className="p-6 md:p-8 print:p-3 space-y-10 print:space-y-4">
             
             {/* Contact Info */}
-            <div id="contact" className="space-y-4">
+            <div id="contact" className="space-y-4 print-avoid-break">
               <SidebarItem icon={<Mail className="w-4 h-4" />} label={t.email} value={profile.email} link={`mailto:${profile.email}`} />
               <SidebarItem icon={<Phone className="w-4 h-4" />} label={t.phone} value={profile.phone} link={`tel:${profile.phone}`} />
               <SidebarItem
@@ -793,27 +793,27 @@ export default async function CV({
             </nav>
 
             {/* Top Skills */}
-            <div>
-              <h3 className="text-sm font-bold text-foreground uppercase tracking-wider mb-4 flex items-center gap-2">
+            <div className="print-avoid-break">
+              <h3 className="text-sm font-bold text-foreground uppercase tracking-wider mb-4 flex items-center gap-2 print-keep-heading">
                 <Cpu className="w-4 h-4 text-accent" /> {t.coreSkills}
               </h3>
               <div className="space-y-2 print:space-y-1.5">
                 {topSkillsLocalized.map((skill) => (
                   <div
                     key={skill}
-                    className="text-xs print:text-[10px] text-sidebar-foreground leading-snug border-l-2 border-accent/40 pl-2 py-0.5"
+                    className="text-xs print:text-[10px] text-sidebar-foreground leading-snug whitespace-pre-line border-l-2 border-accent/40 pl-2 py-0.5 print-avoid-break"
                   >
                     {skill}
                   </div>
                 ))}
               </div>
-              <div className="mt-5 print:mt-3">
-                <h4 className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground mb-2">
+              <div className="mt-5 print:mt-3 print-avoid-break">
+                <h4 className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground mb-2 print-keep-heading">
                   {t.additional}
                 </h4>
                 <div className="space-y-1 print:space-y-0.5">
                   {additionalSkillsLocalized.map((skill) => (
-                    <div key={skill} className="text-[11px] print:text-[10px] text-muted-foreground leading-snug">
+                    <div key={skill} className="text-[11px] print:text-[10px] text-muted-foreground leading-snug whitespace-pre-line print-avoid-break">
                       {skill}
                     </div>
                   ))}
@@ -822,13 +822,13 @@ export default async function CV({
             </div>
 
             {/* Languages */}
-            <div>
-              <h3 className="text-sm font-bold text-foreground uppercase tracking-wider mb-4 flex items-center gap-2">
+            <div className="print-avoid-break">
+              <h3 className="text-sm font-bold text-foreground uppercase tracking-wider mb-4 flex items-center gap-2 print-keep-heading">
                 <Languages className="w-4 h-4 text-accent" /> {t.languages}
               </h3>
-              <div className="space-y-3 print:space-y-2">
+              <div className="space-y-3 print:space-y-2 print-keep-list">
                 {languagesLocalized.map((l) => (
-                  <div key={l.lang}>
+                  <div key={l.lang} className="print-avoid-break">
                     <div className="text-sm text-foreground font-medium flex items-center gap-1.5">
                       <img
                         src={`/flags/${l.flagCode}.svg`}
@@ -847,13 +847,13 @@ export default async function CV({
             </div>
 
             {/* Certifications */}
-            <div>
-              <h3 className="text-sm font-bold text-foreground uppercase tracking-wider mb-4 flex items-center gap-2">
+            <div className="print-avoid-break">
+              <h3 className="text-sm font-bold text-foreground uppercase tracking-wider mb-4 flex items-center gap-2 print-keep-heading">
                 <BadgeCheck className="w-4 h-4 text-accent" /> {t.certifications}
               </h3>
-              <ul className="space-y-2 print:space-y-1">
+              <ul className="space-y-2 print:space-y-1 print-keep-list">
                 {certificationsLocalized.map((cert) => (
-                  <li key={cert} className="text-xs print:text-[10px] text-muted-foreground flex items-start gap-2">
+                  <li key={cert} className="text-xs print:text-[10px] text-muted-foreground flex items-start gap-2 print-avoid-break">
                     <span className="w-1 h-1 bg-accent rounded-full mt-1.5 shrink-0" />
                     {cert}
                   </li>
