@@ -29,12 +29,12 @@ const Section = ({
   icon?: ReactNode;
   className?: string;
 }) => (
-  <section id={id} className={cn("mb-12 print:mb-6", className)}>
-    <div className="mb-6 flex items-center gap-3 border-b border-border pb-2 print:mb-4 print:[break-after:avoid]">
+  <section id={id} className={cn("mb-12 print:mb-4", className)}>
+    <div className="mb-6 flex items-center gap-3 border-b border-border pb-2 print:mb-3 print:[break-after:avoid]">
       {icon && <div className="text-accent">{icon}</div>}
       <h2 className="text-xl font-bold tracking-tight text-foreground md:text-2xl">{title}</h2>
     </div>
-    <div className="space-y-6 print:space-y-4">{children}</div>
+    <div className="space-y-6 print:space-y-3">{children}</div>
   </section>
 );
 
@@ -67,7 +67,7 @@ const ExperienceCard = ({
             {title}
           </h3>
           <div className="mb-1 hidden font-mono text-xs text-muted-foreground print:block">{period}</div>
-          <div className="mb-3 flex items-center gap-2 text-sm font-medium text-accent print:mb-2">
+          <div className="mb-3 flex items-center gap-2 text-sm font-medium text-accent print:mb-1">
             {company}
           </div>
         </div>
@@ -88,15 +88,15 @@ const EducationCard = ({
   period: string;
   details?: string;
 }) => (
-  <div className="flex h-full flex-col rounded-lg border border-border bg-muted/30 p-4 transition-colors hover:border-accent/50 print:p-3">
-    <div className="mb-2 flex items-start justify-between print:[break-inside:avoid]">
+  <div className="flex h-full flex-col rounded-lg border border-border bg-muted/30 p-4 transition-colors hover:border-accent/50 print:p-2.5">
+    <div className="mb-2 flex items-start justify-between print:mb-1 print:[break-inside:avoid]">
       <h3 className="pr-2 text-sm font-bold leading-snug text-foreground">{degree}</h3>
       <span className="shrink-0 whitespace-nowrap rounded border border-border bg-muted px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground">
         {period}
       </span>
     </div>
-    <div className="mb-1 text-xs font-medium text-accent">{school}</div>
-    {details && <div className="mt-auto border-t border-border pt-2 text-xs text-muted-foreground">{details}</div>}
+    <div className="mb-1 text-xs font-medium text-accent print:mb-0.5">{school}</div>
+    {details && <div className="mt-auto border-t border-border pt-2 text-xs text-muted-foreground print:pt-1.5">{details}</div>}
   </div>
 );
 
@@ -496,7 +496,7 @@ export default async function CV({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
       <div className="mx-auto min-h-screen max-w-7xl print:min-h-0 print:grid print:grid-cols-[200px_1fr] md:grid md:grid-cols-[300px_1fr] md:[--hero-row-h:24rem] lg:[--hero-row-h:25rem]">
         <aside className="flex flex-col border-r border-sidebar-border bg-sidebar transition-colors duration-300 print:static print:h-auto print:overflow-visible print:border-b-0 print:border-r print:bg-white print:[break-inside:avoid] md:sticky md:top-0 md:h-screen md:overflow-y-auto">
-          <div className="relative w-full shrink-0 overflow-hidden border-b border-sidebar-border bg-sidebar print:h-auto print:aspect-[3/4] md:h-[var(--hero-row-h)] md:aspect-auto">
+          <div className="relative w-full shrink-0 overflow-hidden border-b border-sidebar-border bg-sidebar aspect-[3/4] print:h-auto print:aspect-[3/4] md:h-[var(--hero-row-h)] md:aspect-auto">
             <div className="absolute inset-0 print:hidden">
               <Avatar staticSrc="/muri.png" animatedSrc="/muri.png" alt={profile.name} priority />
             </div>
@@ -527,7 +527,7 @@ export default async function CV({
             </div>
           </div>
 
-          <div className="space-y-10 p-6 print:space-y-2.5 print:p-2.5 md:p-8">
+          <div className="space-y-10 p-6 print:space-y-2 print:p-2 md:p-8">
             <div id="contact" className="space-y-4 print:space-y-3 print-avoid-break">
               <SidebarItem icon={<Mail className="h-4 w-4" />} label={t.email} value={profile.email} link={`mailto:${profile.email}`} />
               <SidebarItem icon={<Phone className="h-4 w-4" />} label={t.phone} value={profile.phone} link={`tel:${profile.phone}`} />
@@ -666,9 +666,9 @@ export default async function CV({
             </div>
           </div>
 
-          <div className="p-6 print:p-5 md:p-12">
+          <div className="p-6 print:p-4 md:p-12">
             <Section id="experience" title={t.experience} icon={<Briefcase className="h-5 w-5" />}>
-              <div className="space-y-10 print:space-y-5">
+              <div className="space-y-10 print:space-y-3">
                 {experienceLocalized.map((item, i) => (
                   <ExperienceCard key={i} {...item} />
                 ))}
@@ -676,7 +676,7 @@ export default async function CV({
             </Section>
 
             <Section id="internships" title={t.internships} icon={<Briefcase className="h-5 w-5" />}>
-              <div className="space-y-10 print:space-y-5">
+              <div className="space-y-10 print:space-y-3">
                 {internshipLocalized.map((item, i) => (
                   <ExperienceCard key={i} {...item} />
                 ))}
@@ -684,14 +684,14 @@ export default async function CV({
             </Section>
 
             <Section id="education" title={t.education} icon={<GraduationCap className="h-5 w-5" />}>
-              <div className="grid gap-4 print:grid-cols-1 print:gap-2.5 md:grid-cols-2">
+              <div className="grid gap-4 print:grid-cols-1 print:gap-2 md:grid-cols-2">
                 {educationLocalized.map((item, i) => (
                   <EducationCard key={i} {...item} />
                 ))}
               </div>
             </Section>
 
-            <footer className="mt-16 border-t border-border pt-8 text-sm text-muted-foreground print:mt-8 print:pt-5">
+            <footer className="mt-16 border-t border-border pt-8 text-sm text-muted-foreground print:mt-5 print:pt-3">
               <p>© 2026 Murielle Bielawski</p>
             </footer>
           </div>
