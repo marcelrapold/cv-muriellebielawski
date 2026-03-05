@@ -27,7 +27,7 @@ import { Avatar } from "@/components/avatar";
 // --- Components ---
 
 const Section = ({ title, children, icon, className }: { title: string; children: ReactNode; icon?: ReactNode; className?: string }) => (
-  <section className={cn("mb-12", className)}>
+  <section className={cn("mb-12 print:mb-8 print:[break-inside:avoid]", className)}>
     <div className="flex items-center gap-3 mb-6 border-b border-border pb-2">
       {icon && <div className="text-accent">{icon}</div>}
       <h2 className="text-xl md:text-2xl font-bold text-foreground tracking-tight">{title}</h2>
@@ -51,29 +51,32 @@ const ExperienceCard = ({
   description: ReactNode; 
   icon?: ReactNode;
 }) => (
-  <div className="relative pl-8 md:pl-0">
+  <div className="relative pl-8 md:pl-0 print:pl-0 print:[break-inside:avoid]">
     {/* Mobile Timeline Line */}
-    <div className="absolute left-3 top-2 bottom-0 w-px bg-border md:hidden" />
+    <div className="absolute left-3 top-2 bottom-0 w-px bg-border md:hidden print:hidden" />
     
-    <div className="md:grid md:grid-cols-[120px_1fr] lg:grid-cols-[150px_1fr] gap-6 group">
+    <div className="md:grid md:grid-cols-[120px_1fr] lg:grid-cols-[150px_1fr] gap-6 group print:block">
       {/* Date Column */}
-      <div className="hidden md:block text-right pt-1">
+      <div className="hidden md:block text-right pt-1 print:hidden">
         <span className="text-sm font-mono text-muted-foreground group-hover:text-accent transition-colors">{period}</span>
       </div>
 
       {/* Content Column */}
       <div className="relative">
         {/* Timeline Dot (Mobile) */}
-        <div className="absolute -left-[29px] top-1.5 w-2.5 h-2.5 rounded-full bg-muted border border-border md:hidden" />
+        <div className="absolute -left-[29px] top-1.5 w-2.5 h-2.5 rounded-full bg-muted border border-border md:hidden print:hidden" />
         
         {/* Mobile Date */}
-        <div className="md:hidden mb-1">
+        <div className="md:hidden mb-1 print:hidden">
            <span className="text-xs font-mono text-muted-foreground">{period}</span>
         </div>
 
         <h3 className="text-lg font-bold text-foreground group-hover:text-accent transition-colors flex items-center gap-2">
           {title}
         </h3>
+        <div className="hidden print:block text-xs font-mono text-muted-foreground mb-1">
+          {period}
+        </div>
         <div className="text-accent font-medium mb-3 flex items-center gap-2 text-sm">
           {company}
         </div>
@@ -98,7 +101,7 @@ const EducationCard = ({
   details?: string;
   location?: string;
 }) => (
-  <div className="flex flex-col p-4 rounded-lg bg-muted/30 border border-border hover:border-accent/50 transition-colors h-full">
+  <div className="flex flex-col p-4 rounded-lg bg-muted/30 border border-border hover:border-accent/50 transition-colors h-full print:[break-inside:avoid]">
     <div className="flex justify-between items-start mb-2">
       <h3 className="text-foreground font-bold text-sm leading-snug pr-2">{degree}</h3>
       <span className="text-[10px] font-mono text-muted-foreground bg-muted px-1.5 py-0.5 rounded shrink-0 whitespace-nowrap border border-border">{period}</span>
@@ -127,7 +130,15 @@ const SidebarItem = ({
     <div className="overflow-hidden">
       <div className="text-muted-foreground text-xs">{label}</div>
       {link ? (
-        <a href={link} target="_blank" rel="noopener noreferrer" className="text-sidebar-foreground hover:text-foreground transition-colors truncate block font-medium">
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={cn(
+            "text-sidebar-foreground hover:text-foreground transition-colors block font-medium",
+            multiline ? "whitespace-pre-line leading-snug" : "truncate"
+          )}
+        >
           {value}
         </a>
       ) : (
@@ -153,7 +164,40 @@ const profile = {
   email: "marcel@marcelrapold.com",
   phone: "+41 76 566 90 80",
   linkedin: "marcelrapold",
-  summary: "Technology must be efficient, sustainable, and decentralized. Digitalization is not a goal – it’s the lever for real transformation. I design and execute high-impact IT projects with speed, precision, and foresight. From public transport to Bitcoin & Lightning: I build systems that perform."
+  summaryLines: [
+    "Technology must be efficient, sustainable, and decentralized.",
+    "Digitalization is not a goal – it’s the lever for real transformation.",
+    "I design and execute high-impact IT projects with speed, precision, and foresight. From public transport to Bitcoin & Lightning: I build systems that perform.",
+  ],
+};
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: profile.title,
+  email: profile.email,
+  telephone: profile.phone,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Weinbergstrasse 5",
+    postalCode: "8703",
+    addressLocality: "Erlenbach",
+    addressRegion: "ZH",
+    addressCountry: "CH",
+  },
+  sameAs: [
+    `https://linkedin.com/in/${profile.linkedin}`,
+  ],
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://marcelrapold.com",
+  knowsAbout: [
+    "AI Product Management",
+    "Platform Leadership",
+    "ICT Project Leadership",
+    "Digital Transformation",
+    "Bitcoin",
+    "Lightning Network",
+  ],
 };
 
 const experience = [
@@ -353,11 +397,15 @@ const certifications = [
 export default function CV() {
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-amber-500/30">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
       
-      <div className="max-w-7xl mx-auto md:grid md:grid-cols-[300px_1fr] min-h-screen">
+      <div className="max-w-7xl mx-auto md:grid md:grid-cols-[300px_1fr] min-h-screen print:block print:min-h-0">
         
         {/* --- Sidebar (Left) --- */}
-        <aside className="bg-sidebar border-r border-sidebar-border md:sticky md:top-0 md:h-screen md:overflow-y-auto flex flex-col transition-colors duration-300">
+        <aside className="bg-sidebar border-r border-sidebar-border md:sticky md:top-0 md:h-screen md:overflow-y-auto flex flex-col transition-colors duration-300 print:static print:h-auto print:overflow-visible print:border-r-0 print:border-b">
           
           {/* Profile Image - Full Width & Matched Height */}
           <div className="relative w-full aspect-[3/4] overflow-hidden bg-sidebar border-b border-sidebar-border shrink-0">
@@ -371,17 +419,19 @@ export default function CV() {
             <div className="hidden md:block absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-sidebar to-transparent opacity-90 transition-colors duration-300 z-20 pointer-events-none" />
 
             {/* Mobile Gradient Overlay & Content */}
-            <div className="md:hidden absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90 z-20 pointer-events-none" />
-            <div className="md:hidden absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent z-20 pointer-events-none" />
+            <div className="md:hidden print:hidden absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90 z-20 pointer-events-none" />
+            <div className="md:hidden print:hidden absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent z-20 pointer-events-none" />
             
-            <div className="md:hidden absolute bottom-0 left-0 right-0 p-6 flex flex-col justify-end z-30">
+            <div className="md:hidden print:hidden absolute bottom-0 left-0 right-0 p-6 flex flex-col justify-end z-30">
                 <h1 className="text-3xl font-bold tracking-tight text-foreground mb-1 drop-shadow-md">{profile.name}</h1>
                 <p className="text-lg text-accent font-medium mb-3 drop-shadow-md">{profile.title}</p>
-                <p className="text-sm text-muted-foreground/90 leading-relaxed line-clamp-4 text-shadow-sm font-medium">{profile.summary}</p>
+                <p className="text-sm text-muted-foreground/90 leading-relaxed line-clamp-4 text-shadow-sm font-medium">
+                  {profile.summaryLines.join(" ")}
+                </p>
             </div>
             
             {/* Mobile Theme Toggle */}
-            <div className="md:hidden absolute top-4 right-4 z-30">
+            <div className="md:hidden print:hidden absolute top-4 right-4 z-30">
                 <ThemeToggle />
             </div>
           </div>
@@ -393,7 +443,13 @@ export default function CV() {
             <div className="space-y-4">
               <SidebarItem icon={<Mail className="w-4 h-4" />} label="Email" value={profile.email} link={`mailto:${profile.email}`} />
               <SidebarItem icon={<Phone className="w-4 h-4" />} label="Phone" value={profile.phone} link={`tel:${profile.phone}`} />
-              <SidebarItem icon={<MapPin className="w-4 h-4" />} label="Location" value={profile.location} multiline />
+              <SidebarItem
+                icon={<MapPin className="w-4 h-4" />}
+                label="Location"
+                value={profile.location}
+                link="https://earth.google.com/web/search/Weinbergstrasse+5,+8703+Erlenbach,+Switzerland"
+                multiline
+              />
               <SidebarItem icon={<Linkedin className="w-4 h-4" />} label="LinkedIn" value="linkedin.com/in/marcelrapold" link={`https://linkedin.com/in/${profile.linkedin}`} />
               
               <div className="pt-4 border-t border-sidebar-border space-y-4">
@@ -453,8 +509,8 @@ export default function CV() {
         <main className="flex flex-col">
           
           {/* Header & Summary Section - Height Matched to Image (approx) */}
-          <div className="hidden md:flex flex-col justify-center p-6 md:p-12 border-b border-border min-h-[400px] relative">
-            <div className="absolute top-6 right-6">
+          <div className="hidden md:flex print:flex flex-col justify-center p-6 md:p-12 border-b border-border min-h-[400px] print:min-h-0 relative">
+            <div className="absolute top-6 right-6 print:hidden">
               <ThemeToggle />
             </div>
             <div className="mb-8">
@@ -468,7 +524,11 @@ export default function CV() {
 
             <div className="max-w-3xl">
               <p className="text-lg leading-relaxed text-muted-foreground border-l-4 border-accent/20 pl-6">
-                {profile.summary}
+                {profile.summaryLines.map((line, i) => (
+                  <span key={i} className="block">
+                    {line}
+                  </span>
+                ))}
               </p>
             </div>
           </div>
@@ -486,7 +546,7 @@ export default function CV() {
 
             {/* Education - Grid Layout for Compactness */}
             <Section title="Education" icon={<GraduationCap className="w-5 h-5" />}>
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid md:grid-cols-2 gap-4 print:grid-cols-1">
                 {education.map((item, i) => (
                   <EducationCard key={i} {...item} />
                 ))}

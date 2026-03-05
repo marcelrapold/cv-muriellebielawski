@@ -16,9 +16,11 @@ const AUTO_START_MS = 30000;
 const GIF_DURATION_MS = 5040;
 
 export function Avatar({ staticSrc, animatedSrc, alt, className, priority }: AvatarProps) {
+  const [mounted, setMounted] = useState(false);
   const [showGif, setShowGif] = useState(false);
   const [gifRunId, setGifRunId] = useState(0);
   const hideTimerRef = useRef<number | null>(null);
+  const startTimerRef = useRef<number | null>(null);
 
   const playGifOnce = () => {
     if (hideTimerRef.current) {
@@ -29,31 +31,64 @@ export function Avatar({ staticSrc, animatedSrc, alt, className, priority }: Ava
     hideTimerRef.current = window.setTimeout(() => setShowGif(false), GIF_DURATION_MS);
   };
 
+  const stopGif = () => {
+    if (hideTimerRef.current) {
+      window.clearTimeout(hideTimerRef.current);
+      hideTimerRef.current = null;
+    }
+    setShowGif(false);
+  };
+
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) {
+      return;
+    }
+
     const preload = new window.Image();
     preload.src = animatedSrc;
 
-    const startTimer = window.setTimeout(() => {
+    startTimerRef.current = window.setTimeout(() => {
       playGifOnce();
     }, AUTO_START_MS);
 
     return () => {
-      window.clearTimeout(startTimer);
+      if (startTimerRef.current) {
+        window.clearTimeout(startTimerRef.current);
+      }
       if (hideTimerRef.current) {
         window.clearTimeout(hideTimerRef.current);
       }
     };
-  }, [animatedSrc]);
+  }, [animatedSrc, mounted]);
+
+  if (!mounted) {
+    return (
+      <div className="absolute inset-0 z-0">
+        <img
+          src={staticSrc}
+          alt={alt}
+          className={cn("w-full h-full object-cover object-center", className)}
+          loading={priority ? "eager" : "lazy"}
+          decoding="async"
+          draggable={false}
+        />
+      </div>
+    );
+  }
 
   return (
-    <div className="absolute inset-0 z-0" onMouseEnter={playGifOnce}>
+    <div className="absolute inset-0 z-0" onMouseEnter={playGifOnce} onMouseLeave={stopGif}>
       {/* Static Image - Always rendered, stays in background when GIF is shown */}
       <Image
         src={staticSrc}
         alt={alt}
         fill
         className={cn(
-          "w-full h-full object-cover object-center",
+          "w-full h-full object-cover object-center transition-opacity duration-300 ease-out",
           showGif ? "opacity-0" : "opacity-100",
           className
         )}
@@ -66,7 +101,7 @@ export function Avatar({ staticSrc, animatedSrc, alt, className, priority }: Ava
         src={`${animatedSrc}?run=${gifRunId}`}
         alt={alt}
         className={cn(
-          "absolute inset-0 w-full h-full object-cover object-center z-10 pointer-events-none",
+          "absolute inset-0 w-full h-full object-cover object-center z-10 pointer-events-none transition-opacity duration-300 ease-out",
           showGif ? "opacity-100" : "opacity-0",
           className
         )}

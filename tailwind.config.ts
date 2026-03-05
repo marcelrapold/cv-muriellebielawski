@@ -10,6 +10,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        print: { raw: "print" },
+      },
       fontFamily: {
         sans: ["var(--font-inter)", ...fontFamily.sans],
       },
