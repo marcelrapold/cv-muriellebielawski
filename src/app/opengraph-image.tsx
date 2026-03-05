@@ -48,7 +48,7 @@ export default function OpenGraphImage() {
               color: "rgb(245, 158, 11)",
             }}
           >
-            ICT Project Lead, AI Product & Platform Lead
+            ICT Project Lead | AI Product & Platform | EMBA
           </div>
           <div
             style={{

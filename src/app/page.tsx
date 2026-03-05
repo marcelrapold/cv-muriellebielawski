@@ -191,7 +191,7 @@ const profileDe = {
 
 const profileEn = {
   name: "Marcel Rapold",
-  title: "ICT Project Lead | AI Product & Platform Lead | EMBA",
+  title: "ICT Project Lead | AI Product & Platform | EMBA",
   location: "Weinbergstrasse 5\n8703 Erlenbach\nZurich, Switzerland",
   email: "marcel@marcelrapold.com",
   phone: "+41 76 566 90 80",
