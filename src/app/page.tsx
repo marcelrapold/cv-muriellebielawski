@@ -109,7 +109,19 @@ const EducationCard = ({
   </div>
 );
 
-const SidebarItem = ({ icon, label, value, link }: { icon: ReactNode; label: string; value: string; link?: string }) => (
+const SidebarItem = ({
+  icon,
+  label,
+  value,
+  link,
+  multiline = false,
+}: {
+  icon: ReactNode;
+  label: string;
+  value: string;
+  link?: string;
+  multiline?: boolean;
+}) => (
   <div className="flex items-center gap-3 text-sm group">
     <div className="text-muted-foreground group-hover:text-accent transition-colors shrink-0">{icon}</div>
     <div className="overflow-hidden">
@@ -119,7 +131,14 @@ const SidebarItem = ({ icon, label, value, link }: { icon: ReactNode; label: str
           {value}
         </a>
       ) : (
-        <div className="text-sidebar-foreground truncate font-medium">{value}</div>
+        <div
+          className={cn(
+            "text-sidebar-foreground font-medium",
+            multiline ? "whitespace-pre-line leading-snug" : "truncate"
+          )}
+        >
+          {value}
+        </div>
       )}
     </div>
   </div>
@@ -130,7 +149,7 @@ const SidebarItem = ({ icon, label, value, link }: { icon: ReactNode; label: str
 const profile = {
   name: "Marcel Rapold",
   title: "ICT Project Lead, AI Product & Platform Lead | EMBA",
-  location: "Zürich, Switzerland",
+  location: "Weinbergstrasse 5\n8703 Erlenbach\nZürich, Switzerland",
   email: "marcel@marcelrapold.com",
   phone: "+41 76 566 90 80",
   linkedin: "marcelrapold",
@@ -349,20 +368,20 @@ export default function CV() {
               priority
             />
             {/* Desktop Gradient Overlay */}
-            <div className="hidden md:block absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-sidebar to-transparent opacity-90 transition-colors duration-300" />
+            <div className="hidden md:block absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-sidebar to-transparent opacity-90 transition-colors duration-300 z-20 pointer-events-none" />
 
             {/* Mobile Gradient Overlay & Content */}
-            <div className="md:hidden absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90" />
-            <div className="md:hidden absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent" />
+            <div className="md:hidden absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90 z-20 pointer-events-none" />
+            <div className="md:hidden absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent z-20 pointer-events-none" />
             
-            <div className="md:hidden absolute bottom-0 left-0 right-0 p-6 flex flex-col justify-end z-10">
+            <div className="md:hidden absolute bottom-0 left-0 right-0 p-6 flex flex-col justify-end z-30">
                 <h1 className="text-3xl font-bold tracking-tight text-foreground mb-1 drop-shadow-md">{profile.name}</h1>
                 <p className="text-lg text-accent font-medium mb-3 drop-shadow-md">{profile.title}</p>
                 <p className="text-sm text-muted-foreground/90 leading-relaxed line-clamp-4 text-shadow-sm font-medium">{profile.summary}</p>
             </div>
             
             {/* Mobile Theme Toggle */}
-            <div className="md:hidden absolute top-4 right-4 z-10">
+            <div className="md:hidden absolute top-4 right-4 z-30">
                 <ThemeToggle />
             </div>
           </div>
@@ -374,7 +393,7 @@ export default function CV() {
             <div className="space-y-4">
               <SidebarItem icon={<Mail className="w-4 h-4" />} label="Email" value={profile.email} link={`mailto:${profile.email}`} />
               <SidebarItem icon={<Phone className="w-4 h-4" />} label="Phone" value={profile.phone} link={`tel:${profile.phone}`} />
-              <SidebarItem icon={<MapPin className="w-4 h-4" />} label="Location" value={profile.location} />
+              <SidebarItem icon={<MapPin className="w-4 h-4" />} label="Location" value={profile.location} multiline />
               <SidebarItem icon={<Linkedin className="w-4 h-4" />} label="LinkedIn" value="linkedin.com/in/marcelrapold" link={`https://linkedin.com/in/${profile.linkedin}`} />
               
               <div className="pt-4 border-t border-sidebar-border space-y-4">
