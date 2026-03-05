@@ -768,7 +768,7 @@ export default async function CV({
               </div>
             </div>
 
-            <nav className="pt-2 border-t border-sidebar-border print:hidden">
+            <nav className="pt-2 border-t border-sidebar-border md:hidden print:hidden">
               <h3 className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground mb-2">
                 {t.quickLinks}
               </h3>
