@@ -5,34 +5,31 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://marcel.rapold.io";
-const seoTitle = "Marcel Rapold CV | ICT Project Lead | AI Product & Platform | EMBA";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cv-muriellebielawski.vercel.app";
+const seoTitle = "Murielle Bielawski CV | B.Sc. Business Administration";
 const seoDescription =
-  "Marcel Rapold's CV: ICT Project Lead with focus on AI product and platform work, digital platforms, automation, and high-impact IT execution in Zurich, Switzerland.";
+  "Murielle Bielawski's CV: Bachelor of Science in Business Administration with experience in HR, marketing, administration, and customer-facing operations in Berlin.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default: seoTitle,
-    template: "%s | Marcel Rapold",
+    template: "%s | Murielle Bielawski",
   },
   description: seoDescription,
-  applicationName: "Marcel Rapold CV",
+  applicationName: "Murielle Bielawski CV",
   keywords: [
-    "Marcel Rapold",
-    "ICT Project Lead",
-    "AI Product Lead",
-    "Platform Lead",
-    "Digital Transformation",
-    "Zurich",
-    "Switzerland",
-    "Bitcoin",
-    "Lightning Network",
-    "EMBA",
+    "Murielle Bielawski",
+    "Business Administration",
+    "HR",
+    "Marketing",
+    "Working Student",
+    "Berlin",
+    "International Business",
   ],
-  authors: [{ name: "Marcel Rapold", url: siteUrl }],
-  creator: "Marcel Rapold",
-  publisher: "Marcel Rapold",
+  authors: [{ name: "Murielle Bielawski", url: siteUrl }],
+  creator: "Murielle Bielawski",
+  publisher: "Murielle Bielawski",
   alternates: {
     canonical: siteUrl,
   },
@@ -52,7 +49,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    siteName: "Marcel Rapold CV",
+    siteName: "Murielle Bielawski CV",
     title: seoTitle,
     description: seoDescription,
     images: [
@@ -60,13 +57,13 @@ export const metadata: Metadata = {
         url: "/og-image-1200x630.png",
         width: 1200,
         height: 630,
-        alt: "Marcel Rapold - ICT Project Lead | AI Product & Platform | EMBA",
+        alt: "Murielle Bielawski - B.Sc. Business Administration",
       },
       {
         url: "/og-image-1200x1200.png",
         width: 1200,
         height: 1200,
-        alt: "Marcel Rapold portrait",
+        alt: "Murielle Bielawski portrait",
       },
     ],
   },
@@ -74,7 +71,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: seoTitle,
     description: seoDescription,
-    creator: "@marcelrapold",
+    creator: "@muriellebielawski",
     images: ["/twitter-image-1200x600.png"],
   },
   robots: {
