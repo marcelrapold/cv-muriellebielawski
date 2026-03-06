@@ -152,9 +152,8 @@ const profileDe = {
   email: "muriellebielawski@yahoo.de",
   phone: "+49 176 43286430",
   summaryLines: [
-    "HR- und operationsorientierte Business-Kandidatin mit B.Sc. in International Business und laufendem M.Sc. in Business Administration.",
-    "Praxiserfahrung in HR-Operations, administrativer Koordination, Marketing und serviceorientierten Geschäftsprozessen in Corporate-, Mobility- und Retail-Umfeldern.",
-    "Besonders stark in präziser Umsetzung, verlässlicher Kommunikation und der strukturierten Steuerung operativer Abläufe.",
+    "HR- und operationsorientierte Business-Kandidatin mit Fokus auf Business Support und Marketing Coordination.",
+    "Praxiserfahrung in HR, Administration, Marketing und serviceorientierten Prozessen in Corporate-, Mobility- und Retail-Umfeldern.",
   ],
 };
 
@@ -165,9 +164,8 @@ const profileEn = {
   email: "muriellebielawski@yahoo.de",
   phone: "+49 176 43286430",
   summaryLines: [
-    "Business candidate focused on HR operations, business support, and marketing coordination, with a B.Sc. in International Business and ongoing M.Sc. studies in Business Administration.",
-    "Hands-on experience across HR operations, administrative coordination, marketing, and customer-facing business processes in corporate, mobility, and retail environments.",
-    "Brings precision, reliability, and strong communication to the structured execution of day-to-day operations.",
+    "Business candidate focused on HR operations, business support, and marketing coordination.",
+    "Hands-on experience across HR, administration, marketing, and customer-facing processes in corporate, mobility, and retail environments.",
   ],
 };
 
@@ -499,15 +497,15 @@ const topSkillsEn = [
 const languages = [
   { lang: "Deutsch", flagCode: "de", level: "Muttersprache" },
   { lang: "Englisch", flagCode: "us", level: "C1" },
-  { lang: "Ukrainisch", flagCode: "ua", level: "Grundkenntnisse (A1)" },
-  { lang: "Spanisch", flagCode: "es", level: "Grundkenntnisse (A1)" },
+  { lang: "Ukrainisch", flagCode: "ua", level: "Grundkenntnisse" },
+  { lang: "Spanisch", flagCode: "es", level: "Grundkenntnisse" },
 ];
 
 const languagesEn = [
   { lang: "German", flagCode: "de", level: "Native" },
   { lang: "English", flagCode: "us", level: "C1" },
-  { lang: "Ukrainian", flagCode: "ua", level: "Basic (A1)" },
-  { lang: "Spanish", flagCode: "es", level: "Basic (A1)" },
+  { lang: "Ukrainian", flagCode: "ua", level: "Basic" },
+  { lang: "Spanish", flagCode: "es", level: "Basic" },
 ];
 
 const certificationsDe = [
