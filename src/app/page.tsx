@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   Mail,
   MapPin,
@@ -15,6 +16,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { LanguageToggle } from "@/components/language-toggle";
 import { PrintButton } from "@/components/print-button";
 import { Avatar } from "@/components/avatar";
+import { DocumentLanguage } from "@/components/document-language";
 
 const Section = ({
   id,
@@ -145,27 +147,27 @@ const SidebarItem = ({
 
 const profileDe = {
   name: "Murielle Bielawski",
-  title: "Bachelor of Science (B.Sc.) in Business Administration",
-  location: "Kamillenstrasse 54\n12203 Berlin",
+  title: "HR Operations | Business Support | Marketing Coordination",
+  location: "Berlin, Deutschland",
   email: "muriellebielawski@yahoo.de",
   phone: "+49 176 43286430",
   summaryLines: [
-    "Bachelor of Science (B.Sc.) in Business Administration",
-    "mit Praxiserfahrung in HR, Marketing, Administration",
-    "und kundenorientierten operativen Prozessen.",
+    "HR- und operationsorientierte Business-Kandidatin mit B.Sc. in International Business und laufendem M.Sc. in Business Administration.",
+    "Praxiserfahrung in HR-Operations, administrativer Koordination, Marketing und serviceorientierten Geschäftsprozessen in Corporate-, Mobility- und Retail-Umfeldern.",
+    "Besonders stark in präziser Umsetzung, verlässlicher Kommunikation und der strukturierten Steuerung operativer Abläufe.",
   ],
 };
 
 const profileEn = {
   name: "Murielle Bielawski",
-  title: "Bachelor of Science (B.Sc.) in Business Administration",
-  location: "Kamillenstrasse 54\n12203 Berlin",
+  title: "HR Operations | Business Support | Marketing Coordination",
+  location: "Berlin, Germany",
   email: "muriellebielawski@yahoo.de",
   phone: "+49 176 43286430",
   summaryLines: [
-    "Bachelor of Science (B.Sc.) in Business Administration",
-    "with practical experience in HR, marketing, administration,",
-    "and customer-focused operational support.",
+    "Business candidate focused on HR operations, business support, and marketing coordination, with a B.Sc. in International Business and ongoing M.Sc. studies in Business Administration.",
+    "Hands-on experience across HR operations, administrative coordination, marketing, and customer-facing business processes in corporate, mobility, and retail environments.",
+    "Brings precision, reliability, and strong communication to the structured execution of day-to-day operations.",
   ],
 };
 
@@ -173,11 +175,11 @@ const uiText = {
   de: {
     email: "E-Mail",
     phone: "Telefon",
-    location: "Adresse",
-    coreSkills: "Skills",
+    location: "Standort",
+    coreSkills: "Kernkompetenzen",
     languages: "Sprachen",
-    certifications: "Zertifikate",
-    interests: "Interessen & Hobbys",
+    certifications: "Zertifikate & ausgewählte Projekte",
+    interests: "Interessen",
     experience: "Berufserfahrung",
     internships: "Praktika",
     education: "Ausbildung",
@@ -189,12 +191,12 @@ const uiText = {
   en: {
     email: "Email",
     phone: "Phone",
-    location: "Address",
-    coreSkills: "Skills",
+    location: "Location",
+    coreSkills: "Core Skills",
     languages: "Languages",
-    certifications: "Certificates",
-    interests: "Interest & Hobbies",
-    experience: "Employment History",
+    certifications: "Certificates & Selected Projects",
+    interests: "Interests",
+    experience: "Professional Experience",
     internships: "Internships",
     education: "Education",
     quickLinks: "Quick Links",
@@ -210,14 +212,17 @@ const experienceDe = [
     title: "Werkstudentin im HR",
     company: "50Hertz, Berlin",
     description: (
-      <ul className="ml-4 list-outside list-disc space-y-1">
-        <li>Nutzung von HR-Software und Systemen zur Verwaltung von Mitarbeiterdaten und HR-Prozessen.</li>
-        <li>Erstellung von Arbeits- und Empfehlungsschreiben fur Mitarbeitende.</li>
-        <li>
-          Verwaltung von Vertragsverlangerungen, Anpassung von Arbeitszeiten sowie Betreuung von
-          Studierenden-Ausleihen.
-        </li>
-      </ul>
+      <>
+        <p className="mb-3 text-foreground">
+          Werkstudentinnenrolle in den HR-Operations eines etablierten Unternehmens mit Fokus auf dokumentensichere
+          Prozesse, administrative Präzision und die verlässliche Bearbeitung personalrelevanter Vorgänge.
+        </p>
+        <ul className="ml-4 list-outside list-disc space-y-1">
+          <li>Pflege von Mitarbeiterdaten und Bearbeitung laufender Vorgänge in den eingesetzten HR-Systemen.</li>
+          <li>Erstellung von Arbeitszeugnissen und Referenzschreiben für Mitarbeitende.</li>
+          <li>Bearbeitung von Vertragsverlängerungen, Arbeitszeitanpassungen und administrativen Vorgängen im Umfeld studentischer Beschäftigungsverhältnisse.</li>
+        </ul>
+      </>
     ),
   },
   {
@@ -225,14 +230,17 @@ const experienceDe = [
     title: "Werkstudentin",
     company: "Miet me, Riller and Schnauck, Berlin",
     description: (
-      <ul className="ml-4 list-outside list-disc space-y-1">
-        <li>Erstellung und Verwaltung von Mietwagenvertragen.</li>
-        <li>
-          Administrative Aufgaben wie Datenverwaltung und Kundenkorrespondenz zur Sicherstellung
-          reibungsloser Ablaufe.
-        </li>
-        <li>Inspektion von Fahrzeugen vor und nach Vermietung auf Schaden, Sauberkeit und Tankfullstand.</li>
-      </ul>
+      <>
+        <p className="mb-3 text-foreground">
+          Operative Schnittstellenrolle zwischen Kundenservice, Administration und Tagesgeschäft in einem dynamischen
+          Mobilitätsumfeld, das Genauigkeit, Tempo und hohe Verlässlichkeit verlangte.
+        </p>
+        <ul className="ml-4 list-outside list-disc space-y-1">
+          <li>Erstellung und Verwaltung von Fahrzeugmietverträgen.</li>
+          <li>Datenpflege und schriftliche Kundenkorrespondenz zur Sicherstellung reibungsloser Vermietungsabläufe.</li>
+          <li>Prüfung von Fahrzeugen vor und nach der Vermietung hinsichtlich Schäden, Sauberkeit und Tankstand.</li>
+        </ul>
+      </>
     ),
   },
   {
@@ -240,10 +248,16 @@ const experienceDe = [
     title: "Minijob, Einzelhandel",
     company: "Peek & Cloppenburg, Berlin",
     description: (
-      <ul className="ml-4 list-outside list-disc space-y-1">
-        <li>Bedienung der Kasse und Abwicklung von Zahlungen.</li>
-        <li>Unterstutzung des Verkaufsteams bei Kundenberatung und Warenprasentation zur Umsatzsteigerung.</li>
-      </ul>
+      <>
+        <p className="mb-3 text-foreground">
+          Kundennahe Tätigkeit im Einzelhandel mit Fokus auf Servicequalität, Verkaufssupport und souveräner
+          Abwicklung frequenzstarker Store-Prozesse.
+        </p>
+        <ul className="ml-4 list-outside list-disc space-y-1">
+          <li>Abwicklung von Kassiervorgängen und Zahlungsprozessen.</li>
+          <li>Unterstützung des Verkaufsteams bei Kundenberatung und Warenpräsentation zur Förderung eines positiven Einkaufserlebnisses.</li>
+        </ul>
+      </>
     ),
   },
   {
@@ -251,10 +265,16 @@ const experienceDe = [
     title: "Minijob",
     company: "Dentistry Kubina, Leipzig",
     description: (
-      <ul className="ml-4 list-outside list-disc space-y-1">
-        <li>Ubernahme administrativer Aufgaben wie Terminplanung und Verwaltung von Patientenakten.</li>
-        <li>Unterstutzung des zahnarztlichen Teams bei taglichen Ablaufen und Patientenbetreuung.</li>
-      </ul>
+      <>
+        <p className="mb-3 text-foreground">
+          Berufserfahrung in einem sensiblen Praxisumfeld, in dem Diskretion, Genauigkeit und strukturierte
+          Unterstützung im administrativen Tagesgeschäft essenziell waren.
+        </p>
+        <ul className="ml-4 list-outside list-disc space-y-1">
+          <li>Administrative Unterstützung im Tagesgeschäft, insbesondere bei Terminplanung und Pflege von Patientenunterlagen.</li>
+          <li>Unterstützung des Praxisteams bei organisatorischen Abläufen und in der Patientenbetreuung.</li>
+        </ul>
+      </>
     ),
   },
 ];
@@ -265,11 +285,17 @@ const experienceEn = [
     title: "Working Student in HR",
     company: "50Hertz, Berlin",
     description: (
-      <ul className="ml-4 list-outside list-disc space-y-1">
-        <li>Use of HR software and systems to manage employee data and HR processes.</li>
-        <li>Preparation of employment reference letters and recommendation letters for employees.</li>
-        <li>Management of contract renewals, adjustment of working hours, as well as the loan of students.</li>
-      </ul>
+      <>
+        <p className="mb-3 text-foreground">
+          Working student role within the HR operations function of an established company, focused on process-safe
+          administration, precise documentation, and reliable handling of personnel-related workflows.
+        </p>
+        <ul className="ml-4 list-outside list-disc space-y-1">
+          <li>Maintained employee data and processed recurring workflows in the relevant HR systems.</li>
+          <li>Prepared employment references and recommendation letters for employees.</li>
+          <li>Handled contract renewals, working-time adjustments, and administrative workflows related to student employment.</li>
+        </ul>
+      </>
     ),
   },
   {
@@ -277,14 +303,17 @@ const experienceEn = [
     title: "Working Student",
     company: "Miet me, Riller and Schnauck, Berlin",
     description: (
-      <ul className="ml-4 list-outside list-disc space-y-1">
-        <li>Created and managed car rental contracts.</li>
-        <li>
-          Performed administrative tasks such as data management and customer correspondence to ensure smooth
-          operations.
-        </li>
-        <li>Inspect vehicles before and after rentals for damage, cleanliness, and fuel levels.</li>
-      </ul>
+      <>
+        <p className="mb-3 text-foreground">
+          Cross-functional role spanning customer service, administration, and operations in a fast-moving mobility
+          environment where accuracy, pace, and reliability were essential.
+        </p>
+        <ul className="ml-4 list-outside list-disc space-y-1">
+          <li>Created and managed vehicle rental contracts.</li>
+          <li>Maintained operational data and handled written customer correspondence to support smooth rental processes.</li>
+          <li>Inspected vehicles before and after rental for damage, cleanliness, and fuel levels.</li>
+        </ul>
+      </>
     ),
   },
   {
@@ -292,10 +321,16 @@ const experienceEn = [
     title: "Minijob, retail store",
     company: "Peek & Cloppenburg, Berlin",
     description: (
-      <ul className="ml-4 list-outside list-disc space-y-1">
-        <li>Operated the cash register and processed payments.</li>
-        <li>Assisted the sales team with customer consultations and merchandise presentation to increase sales.</li>
-      </ul>
+      <>
+        <p className="mb-3 text-foreground">
+          Customer-facing retail role with a strong service mindset and confident support of sales-driven processes in
+          a demanding store environment.
+        </p>
+        <ul className="ml-4 list-outside list-disc space-y-1">
+          <li>Handled point-of-sale transactions and payment processing.</li>
+          <li>Supported the sales team with customer service and merchandise presentation, contributing to a positive shopping experience.</li>
+        </ul>
+      </>
     ),
   },
   {
@@ -303,10 +338,16 @@ const experienceEn = [
     title: "Minijob",
     company: "Dentistry Kubina, Leipzig",
     description: (
-      <ul className="ml-4 list-outside list-disc space-y-1">
-        <li>Handled administrative tasks such as scheduling appointments and managing patient records.</li>
-        <li>Supported the dental team with daily operations and patient care.</li>
-      </ul>
+      <>
+        <p className="mb-3 text-foreground">
+          Professional experience in a sensitive practice setting that required discretion, organization, and a calm,
+          structured approach to administrative and patient-facing routines.
+        </p>
+        <ul className="ml-4 list-outside list-disc space-y-1">
+          <li>Supported daily administrative work, including appointment scheduling and maintenance of patient records.</li>
+          <li>Assisted the dental team with organizational routines and patient support.</li>
+        </ul>
+      </>
     ),
   },
 ];
@@ -317,11 +358,17 @@ const internshipDe = [
     title: "Praktikum im Marketing",
     company: "Schmohl AG, Zurich",
     description: (
-      <ul className="ml-4 list-outside list-disc space-y-1">
-        <li>Erstellung von Social-Media-Content zur Starkung der Online-Prasenz.</li>
-        <li>Planung und Durchfuhrung von Events inklusive Prasentation neuer Automodelle.</li>
-        <li>Ubernahme administrativer Aufgaben und Unterstutzung bei der Erstellung eines Emergency-Handbooks.</li>
-      </ul>
+      <>
+        <p className="mb-3 text-foreground">
+          Marketingpraktikum in einem hochwertigen Automobilumfeld mit Fokus auf markenorientierte Kommunikation,
+          Eventunterstützung und präzise administrative Koordination.
+        </p>
+        <ul className="ml-4 list-outside list-disc space-y-1">
+          <li>Erstellung von Social-Media-Content zur Stärkung der Online-Präsenz.</li>
+          <li>Operative Unterstützung bei der Planung und Durchführung von Veranstaltungen, einschließlich der Präsentation neuer Automodelle.</li>
+          <li>Administrative Koordination sowie Beiträge zur Erstellung eines Emergency Handbooks.</li>
+        </ul>
+      </>
     ),
   },
   {
@@ -329,11 +376,17 @@ const internshipDe = [
     title: "Praktikum im Marketing",
     company: "La marca mobility GmbH, Landsberg am Lech",
     description: (
-      <ul className="ml-4 list-outside list-disc space-y-1">
-        <li>Betreuung und Pflege von Social-Media-Kanalen zur Steigerung der Markenbekanntheit.</li>
-        <li>Planung und Koordination von Events inklusive Organisation von Materialien und Teilnehmerkommunikation.</li>
-        <li>Aufbau und Pflege von Kundenbeziehungen durch zielgerichtete Marketingmassnahmen.</li>
-      </ul>
+      <>
+        <p className="mb-3 text-foreground">
+          Marketingstation mit Fokus auf Social Media, Eventorganisation und operative Unterstützung kundenorientierter
+          Kommunikations- und Markenmaßnahmen.
+        </p>
+        <ul className="ml-4 list-outside list-disc space-y-1">
+          <li>Betreuung und Pflege von Social-Media-Kanälen zur Steigerung der Markenbekanntheit.</li>
+          <li>Planung und Koordination von Events einschließlich Materialorganisation und Teilnehmerkommunikation.</li>
+          <li>Unterstützung beim Aufbau und der Pflege von Kundenbeziehungen durch zielgerichtete Marketingmaßnahmen.</li>
+        </ul>
+      </>
     ),
   },
 ];
@@ -344,11 +397,17 @@ const internshipEn = [
     title: "Internship in Marketing",
     company: "Schmohl AG, Zurich",
     description: (
-      <ul className="ml-4 list-outside list-disc space-y-1">
-        <li>Creating content for social media to enhance online presence.</li>
-        <li>Planned and executed events, including presenting new car model.</li>
-        <li>Handled administrative task and assisted in creating an emergency handbook.</li>
-      </ul>
+      <>
+        <p className="mb-3 text-foreground">
+          Marketing internship in a premium automotive environment focused on brand communication, event support, and
+          precise administrative coordination.
+        </p>
+        <ul className="ml-4 list-outside list-disc space-y-1">
+          <li>Created social media content to strengthen the brand's online presence.</li>
+          <li>Supported the planning and execution of events, including presentations of new vehicle models.</li>
+          <li>Handled administrative coordination and contributed to the creation of an emergency handbook.</li>
+        </ul>
+      </>
     ),
   },
   {
@@ -356,11 +415,17 @@ const internshipEn = [
     title: "Internship in Marketing",
     company: "La marca mobility GmbH, Landsberg am Lech",
     description: (
-      <ul className="ml-4 list-outside list-disc space-y-1">
-        <li>Managed and maintained social media channels to increase brand awareness.</li>
-        <li>Planned and coordinated events, including organizing materials and communicating with participants.</li>
-        <li>Developed and maintained customer relationships through targeted marketing efforts.</li>
-      </ul>
+      <>
+        <p className="mb-3 text-foreground">
+          Marketing role focused on social media, event coordination, and operational support for customer-facing
+          communication and brand-building activities.
+        </p>
+        <ul className="ml-4 list-outside list-disc space-y-1">
+          <li>Managed and maintained social media channels to support brand visibility.</li>
+          <li>Coordinated event logistics, including materials and participant communication.</li>
+          <li>Supported customer relationship development through targeted marketing activities.</li>
+        </ul>
+      </>
     ),
   },
 ];
@@ -368,12 +433,12 @@ const internshipEn = [
 const educationDe = [
   {
     period: "10/25 - heute",
-    degree: "Master of Science, Business Administration",
+    degree: "M.Sc. Business Administration",
     school: "Business & Law School, Berlin",
   },
   {
     period: "10/21 - 07/25",
-    degree: "Bachelor of Science, International Business",
+    degree: "B.Sc. International Business",
     school: "Business & Law School, Berlin",
   },
   {
@@ -383,7 +448,7 @@ const educationDe = [
   },
   {
     period: "08/19 - 07/21",
-    degree: "IGCSE-IB Diploma Higher Levels",
+    degree: "IB Diploma (Higher Level)",
     school: "International School, Leipzig",
     details: "Art, Business, English",
   },
@@ -392,12 +457,12 @@ const educationDe = [
 const educationEn = [
   {
     period: "10/25 - present",
-    degree: "Master of Science, Business Administration",
+    degree: "M.Sc. Business Administration",
     school: "Business & Law School, Berlin",
   },
   {
     period: "10/21 - 07/25",
-    degree: "Bachelor of Science, International Business",
+    degree: "B.Sc. International Business",
     school: "Business & Law School, Berlin",
   },
   {
@@ -407,56 +472,120 @@ const educationEn = [
   },
   {
     period: "08/19 - 07/21",
-    degree: "IGCSE-IB Diploma Higher Levels",
+    degree: "IB Diploma (Higher Level)",
     school: "International School, Leipzig",
     details: "Art, Business, English",
   },
 ];
 
-const topSkills = [
-  "MS Office Suite (Excel, Word, PowerPoint)",
-  "Social Media Management (Instagram, Facebook, LinkedIn)",
-  "Data Management Skills (SAP & ELO)",
+const topSkillsDe = [
+  "HR Operations & Personaladministration",
+  "Administrative Koordination & Prozesssicherheit",
+  "Marketing Coordination & Social Media Support",
+  "Dokumenten- und Datenmanagement (SAP, ELO)",
+  "Stakeholder- und Kundenkommunikation",
+  "MS Office für Reporting, Korrespondenz & Organisation",
+];
+
+const topSkillsEn = [
+  "HR Operations & People Administration",
+  "Administrative Coordination & Process Reliability",
+  "Marketing Coordination & Social Media Support",
+  "Document and Data Management (SAP, ELO)",
+  "Stakeholder and Customer Communication",
+  "MS Office for Reporting, Correspondence & Organization",
 ];
 
 const languages = [
   { lang: "Deutsch", flagCode: "de", level: "Muttersprache" },
   { lang: "Englisch", flagCode: "us", level: "C1" },
-  { lang: "Ukrainisch", flagCode: "ua", level: "A1" },
-  { lang: "Spanisch", flagCode: "es", level: "A1" },
+  { lang: "Ukrainisch", flagCode: "ua", level: "Grundkenntnisse (A1)" },
+  { lang: "Spanisch", flagCode: "es", level: "Grundkenntnisse (A1)" },
 ];
 
 const languagesEn = [
-  { lang: "German", flagCode: "de", level: "Native tongue" },
+  { lang: "German", flagCode: "de", level: "Native" },
   { lang: "English", flagCode: "us", level: "C1" },
-  { lang: "Ukrainian", flagCode: "ua", level: "A1" },
-  { lang: "Spanish", flagCode: "es", level: "A1" },
+  { lang: "Ukrainian", flagCode: "ua", level: "Basic (A1)" },
+  { lang: "Spanish", flagCode: "es", level: "Basic (A1)" },
 ];
 
 const certificationsDe = [
-  "12/23 - American Red Cross: First Aid",
-  "06/21 - NIVEA Marketing Projekt, Beiersdorf (Berlin)",
+  "12/23 - American Red Cross: First Aid Certification",
+  "06/21 - Ausgewähltes Marketingprojekt: NIVEA / Beiersdorf (Berlin)",
 ];
 
 const certificationsEn = [
-  "12/23 - American Red Cross: First Aid",
-  "06/21 - NIVEA Marketing Project, Beiersdorf (Berlin)",
+  "12/23 - American Red Cross: First Aid Certification",
+  "06/21 - Selected marketing project: NIVEA / Beiersdorf (Berlin)",
 ];
 
 const niveaProjectBulletsDe = [
-  "Neues NIVEA-Produkt konzipiert",
-  "Zielgruppe und Wettbewerb analysiert",
-  "Prototyp entwickelt und vorgestellt",
+  "Produktkonzept für NIVEA entwickelt",
+  "Zielgruppe, Positionierung und Wettbewerb analysiert",
+  "Konzept als Prototyp ausgearbeitet und präsentiert",
 ];
 
 const niveaProjectBulletsEn = [
-  "Designed a new NIVEA product concept",
-  "Analyzed target group and competitors",
-  "Built and presented a prototype",
+  "Developed a product concept for NIVEA",
+  "Analyzed target audience, positioning, and competitors",
+  "Translated the concept into a prototype and presented it",
 ];
 
-const interestsDe = ["Gym", "Reisen", "Podcast", "Zumba"];
-const interestsEn = ["Gym", "Travelling", "Podcast", "Zumba"];
+const interestsDe = ["Fitness & Zumba", "Reisen", "Podcasts"];
+const interestsEn = ["Fitness & Zumba", "Travel", "Podcasts"];
+
+const pageMetadata = {
+  de: {
+    title: "Murielle Bielawski | HR Operations, Business Support & Marketing Coordination",
+    description:
+      "Murielle Bielawski ist B.Sc.-Absolventin in International Business und M.Sc.-Kandidatin mit Praxiserfahrung in HR-Operations, administrativer Koordination, Marketing und serviceorientierten Geschäftsprozessen in Berlin.",
+  },
+  en: {
+    title: "Murielle Bielawski | HR Operations, Business Support & Marketing Coordination",
+    description:
+      "Murielle Bielawski is a B.Sc. International Business graduate and M.Sc. Business Administration candidate with hands-on experience in HR operations, administrative coordination, marketing, and customer-facing business processes in Berlin.",
+  },
+} as const;
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ lang?: string }>;
+}): Promise<Metadata> {
+  const { lang } = await searchParams;
+  const locale = lang === "de" ? "de" : "en";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cv-muriellebielawski.vercel.app";
+  const pageUrl = locale === "de" ? `${siteUrl}?lang=de` : siteUrl;
+  const metadata = pageMetadata[locale];
+
+  return {
+    title: { absolute: metadata.title },
+    description: metadata.description,
+    alternates: {
+      canonical: pageUrl,
+      languages: {
+        en: siteUrl,
+        de: `${siteUrl}?lang=de`,
+      },
+    },
+    openGraph: {
+      type: "website",
+      locale: locale === "de" ? "de_DE" : "en_US",
+      alternateLocale: locale === "de" ? "en_US" : "de_DE",
+      url: pageUrl,
+      title: metadata.title,
+      description: metadata.description,
+      images: [{ url: `/api/social-image?lang=${locale}`, alt: "Murielle Bielawski CV preview" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: metadata.title,
+      description: metadata.description,
+      images: [`/api/social-image?lang=${locale}`],
+    },
+  };
+}
 
 export default async function CV({
   searchParams,
@@ -466,7 +595,7 @@ export default async function CV({
   const { lang } = await searchParams;
   const locale = lang === "de" ? "de" : "en";
   const profile = locale === "en" ? profileEn : profileDe;
-  const topSkillsLocalized = topSkills;
+  const topSkillsLocalized = locale === "en" ? topSkillsEn : topSkillsDe;
   const languagesLocalized = locale === "en" ? languagesEn : languages;
   const certificationsLocalized = locale === "en" ? certificationsEn : certificationsDe;
   const niveaProjectBulletsLocalized = locale === "en" ? niveaProjectBulletsEn : niveaProjectBulletsDe;
@@ -485,24 +614,24 @@ export default async function CV({
     telephone: profile.phone,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Kamillenstrasse 54",
-      postalCode: "12203",
       addressLocality: "Berlin",
       addressCountry: "DE",
     },
     url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://cv-muriellebielawski.vercel.app",
     knowsAbout: [
-      "Human Resources",
-      "Marketing",
+      "HR Operations",
+      "Administrative Coordination",
+      "Business Support",
+      "Marketing Coordination",
       "Business Administration",
       "Data Management",
-      "Social Media",
       "Customer Communication",
     ],
   };
 
   return (
     <div className="min-h-screen bg-background font-sans text-foreground selection:bg-amber-500/30 print:bg-white print:text-black">
+      <DocumentLanguage lang={locale} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
       <div className="mx-auto min-h-screen max-w-7xl print:min-h-0 print:grid print:grid-cols-[200px_1fr] md:grid md:grid-cols-[300px_1fr] md:[--hero-row-h:24rem] lg:[--hero-row-h:25rem]">
         <aside className="flex flex-col border-r border-sidebar-border bg-sidebar transition-colors duration-300 print:static print:h-auto print:overflow-visible print:border-b-0 print:border-r print:bg-white print:[break-inside:avoid] md:sticky md:top-0 md:h-screen md:overflow-y-auto">
@@ -530,9 +659,9 @@ export default async function CV({
             </div>
             <div className="absolute right-4 top-4 z-30 print:hidden md:hidden">
               <div className="flex items-center gap-2">
-                <LanguageToggle />
-                <ThemeToggle />
-                <PrintButton />
+                <LanguageToggle locale={locale} />
+                <ThemeToggle locale={locale} />
+                <PrintButton locale={locale} />
               </div>
             </div>
           </div>
@@ -545,7 +674,7 @@ export default async function CV({
                 icon={<MapPin className="h-4 w-4" />}
                 label={t.location}
                 value={profile.location}
-                link="https://maps.google.com/?q=Kamillenstrasse+54,+12203+Berlin"
+                link="https://maps.google.com/?q=Berlin"
                 multiline
               />
             </div>
@@ -656,9 +785,9 @@ export default async function CV({
           <div className="relative hidden min-h-0 flex-col justify-center border-b border-border p-6 print:flex print:p-5 md:flex md:h-[var(--hero-row-h)] md:p-12">
             <div className="absolute right-6 top-6 print:hidden">
               <div className="flex items-center gap-2">
-                <LanguageToggle />
-                <ThemeToggle />
-                <PrintButton />
+                <LanguageToggle locale={locale} />
+                <ThemeToggle locale={locale} />
+                <PrintButton locale={locale} />
               </div>
             </div>
             <div className="mb-8">

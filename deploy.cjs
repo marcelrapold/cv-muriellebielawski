@@ -1,54 +1,42 @@
-const fs = require('fs');
-const path = require('path');
-const https = require('https');
-
 const TOKEN = process.env.VERCEL_TOKEN;
-const PROJECT_ID = 'prj_VecRG4GhWhnWtYwDVUmcyzq6OxM8';
-const GITHUB_REPO = process.env.DEPLOY_GITHUB_REPO || 'your-org/cv-muriellebielawski';
-
-const files = [
-  'package.json',
-  'package-lock.json', 
-  'next.config.ts',
-  'tsconfig.json',
-  'tailwind.config.ts',
-  'src/app/page.tsx',
-  'src/app/layout.tsx',
-  'src/app/globals.css'
-];
+const PROJECT_ID = process.env.VERCEL_PROJECT_ID;
+const GITHUB_REPO = process.env.DEPLOY_GITHUB_REPO;
+const GITHUB_REF = process.env.DEPLOY_GITHUB_REF || "main";
 
 async function createDeployment() {
-  // First, get the deployment prefs
-  const prefsRes = await fetch(`https://api.vercel.com/v6/deployments/prefs?projectId=${PROJECT_ID}`, {
-    headers: { Authorization: `Bearer ${TOKEN}` }
-  });
-  const prefs = await prefsRes.json();
-  
-  console.log('Got prefs:', prefs);
-  
-  // Create deployment
-  const deploymentRes = await fetch('https://api.vercel.com/v1/deployments', {
-    method: 'POST',
+  if (!TOKEN) {
+    throw new Error("Missing VERCEL_TOKEN.");
+  }
+
+  if (!PROJECT_ID) {
+    throw new Error("Missing VERCEL_PROJECT_ID.");
+  }
+
+  if (!GITHUB_REPO) {
+    throw new Error("Missing DEPLOY_GITHUB_REPO.");
+  }
+
+  const deploymentRes = await fetch("https://api.vercel.com/v1/deployments", {
+    method: "POST",
     headers: {
       Authorization: `Bearer ${TOKEN}`,
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      name: 'murielle-cv',
+      name: "murielle-cv",
       project: PROJECT_ID,
-      framework: 'nextjs',
+      framework: "nextjs",
       gitSource: {
-        type: 'github',
+        type: "github",
         repo: GITHUB_REPO,
-        ref: 'master'
+        ref: GITHUB_REF,
       },
-      // Skip git commit check
-      skipGitConnect: true
-    })
+      skipGitConnect: true,
+    }),
   });
-  
+
   const deployment = await deploymentRes.json();
-  console.log('Deployment:', deployment);
+  console.log("Deployment:", deployment);
 }
 
 createDeployment().catch(console.error);

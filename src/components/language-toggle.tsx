@@ -4,7 +4,13 @@ import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 
-export function LanguageToggle({ className }: { className?: string }) {
+export function LanguageToggle({
+  className,
+  locale = "en",
+}: {
+  className?: string;
+  locale?: "de" | "en";
+}) {
   const router = useRouter();
   const pathname = usePathname();
   const [activeLang, setActiveLang] = useState<"de" | "en">(() => {
@@ -46,6 +52,10 @@ export function LanguageToggle({ className }: { className?: string }) {
     setLang(currentLang === "de" ? "en" : "de");
   };
 
+  const nextLang = activeLang === "de" ? "EN" : "DE";
+  const buttonLabel =
+    locale === "de" ? `Sprache wechseln zu ${nextLang}` : `Switch language to ${nextLang}`;
+
   return (
     <button
       type="button"
@@ -54,14 +64,14 @@ export function LanguageToggle({ className }: { className?: string }) {
         "h-9 w-9 p-2 rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors relative flex items-center justify-center",
         className
       )}
-      aria-label={`Sprache wechseln zu ${activeLang === "de" ? "EN" : "DE"}`}
-      title={`Switch to ${activeLang === "de" ? "EN" : "DE"}`}
+      aria-label={buttonLabel}
+      title={buttonLabel}
     >
       <span
         className="text-[11px] font-semibold leading-none tracking-wide text-center"
         aria-hidden="true"
       >
-        {activeLang === "de" ? "DE" : "EN"}
+        {nextLang}
       </span>
     </button>
   );
