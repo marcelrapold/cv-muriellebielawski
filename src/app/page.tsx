@@ -147,7 +147,7 @@ const SidebarItem = ({
 
 const profileDe = {
   name: "Murielle Bielawski",
-  title: "HR Operations | Business Support | Marketing Coordination",
+  title: "Bachelor of Science (B.Sc.) in Business Administration | HR Operations | Business Support | Marketing Coordination",
   location: "Berlin, Deutschland",
   email: "muriellebielawski@yahoo.de",
   phone: "+49 176 43286430",
@@ -159,7 +159,7 @@ const profileDe = {
 
 const profileEn = {
   name: "Murielle Bielawski",
-  title: "HR Operations | Business Support | Marketing Coordination",
+  title: "Bachelor of Science (B.Sc.) in Business Administration | HR Operations | Business Support | Marketing Coordination",
   location: "Berlin, Germany",
   email: "muriellebielawski@yahoo.de",
   phone: "+49 176 43286430",
